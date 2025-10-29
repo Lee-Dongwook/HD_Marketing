@@ -23,8 +23,6 @@ export default function SiteNav() {
 
   const disabledNav = "";
 
-  const disableLogo = pathname.includes("/about-us/core-value");
-
   // body scroll lock
   useEffect(() => {
     if (!open) return;
@@ -168,30 +166,27 @@ export default function SiteNav() {
   return (
     <>
       {/* 상단 얇은 바 + 햄버거(좌) / 로그인+IG(우) */}
-      <header className="sticky top-0 left-0 bg-white bg-opacity-70 backdrop-blur-md flex items-center justify-end w-full h-[82px] p-16 text-[12px] leading-[16.08px] font-sans text-[#1c1e21] transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)]">
+      <header
+        className="sticky top-0 left-0 bg-opacity-70 backdrop-blur-md flex items-center justify-end w-full h-[82px] p-16 text-[12px] leading-[16.08px] font-sans text-[#1c1e21] transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)]"
+        style={{
+          background: "#1f1f1f",
+        }}
+      >
         <div className="mx-auto flex h-14 w-full items-center justify-between px-6 md:px-10">
           <button
             type="button"
             aria-label="메뉴 열기"
             aria-expanded={open}
             onClick={() => setOpen(true)}
-            className="inline-flex items-center rounded-lg p-2 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+            className="hidden items-center rounded-lg p-2 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
           >
             <SiteNavHamburgerIcon className="h-12 w-14 text-gray-900" />
           </button>
 
           <div aria-hidden className="flex-1" />
-          {!disableLogo && (
-            <img
-              src={`${NEXT_PUBLIC_CDN_BASE}/images/AddeepLogo.png`}
-              alt="logo"
-              className="h-14 w-16"
-            />
-          )}
         </div>
       </header>
 
-      {/* 오버레이는 Portal로 띄워서 나머지 레이아웃에 영향 X */}
       {open &&
         typeof window !== "undefined" &&
         createPortal(

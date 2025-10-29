@@ -2,13 +2,54 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useResponsive } from "../../lib/useResponsive";
+import { gsap } from "gsap";
 
 export default function LandingPage() {
   const { isMobile, isTablet } = useResponsive();
   const heroTextRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Add any animations here if needed
+    const ctx = gsap.context(() => {
+      // Animate hero text badge
+      gsap.from(heroTextRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      });
+
+      // Animate title "High & Dynamic"
+      gsap.from(titleRef.current, {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        delay: 0.3,
+        ease: "power3.out",
+      });
+
+      // Animate subtitle "모두의 성장이 시작되는 곳"
+      gsap.from(subtitleRef.current, {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: "power3.out",
+      });
+
+      // Animate CTA button
+      gsap.from(ctaRef.current, {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.7,
+        ease: "power3.out",
+      });
+    });
+
+    return () => ctx.revert();
   }, []);
 
   if (isMobile || isTablet) {
@@ -34,16 +75,22 @@ export default function LandingPage() {
 
           {/* Main Tagline */}
           <div className="pt-8 space-y-8">
-            <h3 className="text-3xl md:text-4xl font-bold text-white leading-relaxed">
+            <h3
+              ref={titleRef}
+              className="text-3xl md:text-4xl font-bold text-white leading-relaxed"
+            >
               High & Dynamic
             </h3>
-            <h3 className="text-3xl md:text-4xl font-bold text-white leading-relaxed">
+            <h3
+              ref={subtitleRef}
+              className="text-3xl md:text-4xl font-bold text-white leading-relaxed"
+            >
               모두의 성장이 시작되는 곳
             </h3>
           </div>
 
           {/* CTA Button */}
-          <div className="pt-12">
+          <div ref={ctaRef} className="pt-12">
             <Link
               href="/contact"
               className="inline-block px-8 py-4 bg-blue-500 text-white text-lg font-medium rounded-md hover:bg-gray-800 transition-colors duration-200"
@@ -137,17 +184,23 @@ export default function LandingPage() {
         </div>
 
         {/* Main Tagline */}
-        <div className="pt-12 space-y-12">
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-relaxed">
-            High & Dynamic
+        <div className="pt-12 space-y-8">
+          <h3
+            ref={titleRef}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-relaxed"
+          >
+            HIGH & DYNAMIC
           </h3>
-          <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-relaxed">
+          <h3
+            ref={subtitleRef}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-relaxed"
+          >
             모두의 성장이 시작되는 곳
           </h3>
         </div>
 
         {/* CTA Button */}
-        <div className="pt-16">
+        <div ref={ctaRef} className="pt-16">
           <Link
             href="/contact"
             className="inline-block px-12 py-5 bg-blue-500 text-white text-xl font-medium rounded-md hover:bg-gray-800 transition-colors duration-200"
