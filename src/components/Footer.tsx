@@ -1,11 +1,15 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useResponsive } from "../lib/useResponsive";
 import { footerLinks, socialIcons } from "../constants/footer";
 
 export default function Footer() {
   const { isMobile, isTablet } = useResponsive();
+  const pathname = usePathname();
+
+  const isLandingPage = pathname === "/";
 
   if (isMobile || isTablet) {
     return (
@@ -58,16 +62,17 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <div className="mt-8 flex justify-center text-xs text-gray-400">
-            <span>© 2025. Addeep Inc. All rights reserved.</span>
-          </div>
         </div>
       </footer>
     );
   }
 
   return (
-    <footer className="border-t border-gray-200 bg-white">
+    <footer
+      className={`border-t border-gray-200 bg-white ${
+        isLandingPage ? "hidden" : ""
+      }`}
+    >
       <div className="mx-auto max-w-screen-2xl px-6 py-12 md:px-10">
         {/* Top navigation columns */}
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:grid-cols-6">
@@ -116,9 +121,6 @@ export default function Footer() {
               )}
             </Link>
           ))}
-        </div>
-        <div className="mt-10 flex justify-center text-xs text-gray-400">
-          <span>© 2025. Addeep Inc. All rights reserved.</span>
         </div>
       </div>
     </footer>

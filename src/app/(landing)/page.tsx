@@ -13,33 +13,103 @@ export default function LandingPage() {
 
   if (isMobile || isTablet) {
     return (
-      <main className="min-h-screen bg-white flex flex-col items-center justify-center px-6 py-20">
+      <main
+        className="min-h-screen flex flex-col items-center justify-center px-6 py-20"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, #3355b8 0%, #232b40 50%, #1f1f1f 100%)",
+        }}
+      >
         {/* Hero Section */}
-        <div className="w-full max-w-4xl space-y-8 text-center">
-          {/* Repeated Text */}
-          <div ref={heroTextRef} className="space-y-2">
-            <h1 className="text-3xl font-bold text-gray-900 leading-tight">
+        <div className="w-full space-y-8 text-center flex flex-col items-center justify-center">
+          {/* Repeated Text with gradient effect */}
+          <div
+            ref={heroTextRef}
+            className="space-y-4 rounded-3xl bg-white/10 p-2 w-2/3 md:w-1/2"
+          >
+            <h4 className="text-sm md:text-base font-bold text-white leading-tight">
               성과를 만드는 디지털 마케팅
-            </h1>
+            </h4>
           </div>
 
           {/* Main Tagline */}
-          <div className="pt-8">
-            <h3 className="text-2xl font-bold text-gray-900 leading-relaxed">
-              # High & Dynamic
-              <br />
+          <div className="pt-8 space-y-8">
+            <h3 className="text-3xl md:text-4xl font-bold text-white leading-relaxed">
+              High & Dynamic
+            </h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white leading-relaxed">
               모두의 성장이 시작되는 곳
             </h3>
           </div>
 
           {/* CTA Button */}
-          <div className="pt-8">
+          <div className="pt-12">
             <Link
               href="/contact"
-              className="inline-block px-8 py-4 bg-black text-white text-lg font-medium rounded-full hover:bg-gray-800 transition-colors duration-200"
+              className="inline-block px-8 py-4 bg-blue-500 text-white text-lg font-medium rounded-md hover:bg-gray-800 transition-colors duration-200"
             >
               문의하기
             </Link>
+          </div>
+        </div>
+
+        {/* Infinite Logo Slider */}
+        <div className="absolute top-full w-full overflow-hidden py-6 bg-white/5">
+          <div className="flex animate-scroll">
+            {/* First Set */}
+            <div className="flex items-center gap-12 min-w-max px-6">
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                Logoipsum
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                CompanyName
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                BrandStudio
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                DesignCo
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                TechLab
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                CreativeHub
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                InnoWorks
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                DigitalPro
+              </span>
+            </div>
+            {/* Second Set (Duplicate for seamless loop) */}
+            <div className="flex items-center gap-12 min-w-max px-6">
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                Logoipsum
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                CompanyName
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                BrandStudio
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                DesignCo
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                TechLab
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                CreativeHub
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                InnoWorks
+              </span>
+              <span className="text-lg font-bold text-white/80 whitespace-nowrap">
+                DigitalPro
+              </span>
+            </div>
           </div>
         </div>
       </main>
