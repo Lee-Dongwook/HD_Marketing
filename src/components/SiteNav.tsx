@@ -4,13 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import {
-  SiteNavChevronIcon,
-  SiteNavCloseIcon,
-  SiteNavHamburgerIcon,
-} from "@/icons";
+import { SiteNavCloseIcon, SiteNavHamburgerIcon } from "@/icons";
 import { useResponsive } from "../lib/useResponsive";
-import { NAV, type DefaultLinkType } from "../constants/nav";
+import { NAV } from "../constants/nav";
 import { NEXT_PUBLIC_CDN_BASE } from "../lib/env";
 
 export default function SiteNav() {
@@ -18,8 +14,6 @@ export default function SiteNav() {
   const [exp, setExp] = useState<Record<string, boolean>>({});
 
   const { isMobile, isTablet } = useResponsive();
-
-  const pathname = usePathname();
 
   const disabledNav = "";
 
@@ -47,15 +41,20 @@ export default function SiteNav() {
   if (isMobile || isTablet) {
     return (
       <>
-        <header className="sticky top-0 left-0 bg-white bg-opacity-70 backdrop-blur-md flex items-center justify-end w-full h-[82px] p-8 text-[12px] leading-[16.08px] font-sans text-[#1c1e21] transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)]">
+        <header
+          className="sticky top-0 left-0 backdrop-blur-md flex items-center justify-end w-full h-[82px] p-8 text-[12px] leading-[16.08px] font-sans transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)] z-50"
+          style={{
+            background: "rgba(35, 43, 64, 0.85)",
+          }}
+        >
           <button
             type="button"
             aria-label="메뉴 열기"
             aria-expanded={open}
             onClick={() => setOpen(true)}
-            className="inline-flex items-center rounded-lg p-2 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+            className="inline-flex items-center rounded-lg p-2 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
           >
-            <SiteNavHamburgerIcon className="h-8 w-8 text-gray-900" />
+            <SiteNavHamburgerIcon className="h-8 w-8 text-white" />
           </button>
           <div aria-hidden className="flex-1" />
           <img
@@ -106,12 +105,13 @@ export default function SiteNav() {
     <>
       {/* 상단 얇은 바 + 햄버거(좌) / 로그인+IG(우) */}
       <header
-        className="sticky top-0 left-0 bg-opacity-70 backdrop-blur-md flex items-center justify-end w-full h-[82px] p-16 text-[12px] leading-[16.08px] font-sans text-[#1c1e21] transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)]"
+        className="sticky top-0 left-0 flex items-center justify-between w-full h-24 px-16 text-xl text-[#1c1e21] z-50"
         style={{
-          background: "#1f1f1f",
+          background: "rgba(35, 43, 64, 0.85)",
         }}
       >
-        <div className="mx-auto flex h-14 w-full items-center justify-center px-6 md:px-10">
+        <div></div>
+        <div className="flex h-14 items-center justify-center">
           <div className="flex flex-row items-center gap-4">
             {NAV.map((it) => {
               return (
@@ -123,6 +123,14 @@ export default function SiteNav() {
               );
             })}
           </div>
+        </div>
+        <div>
+          <Link
+            href="/contact"
+            className="inline-block w-32 p-4 bg-blue-500 text-white text-xl font-medium rounded-md transition-colors duration-200 text-center"
+          >
+            문의하기
+          </Link>
         </div>
       </header>
     </>
