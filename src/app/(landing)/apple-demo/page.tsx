@@ -16,6 +16,7 @@ export default function AppleDemoPage() {
   const section2Ref = useRef<HTMLDivElement>(null);
   const section3Ref = useRef<HTMLDivElement>(null);
   const section4Ref = useRef<HTMLDivElement>(null);
+  const section5Ref = useRef<HTMLDivElement>(null);
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const line3Ref = useRef<HTMLDivElement>(null);
@@ -34,6 +35,17 @@ export default function AppleDemoPage() {
   const reason4Ref = useRef<HTMLDivElement>(null);
   const emphasisRef = useRef<HTMLDivElement>(null);
   const finalQuestionRef = useRef<HTMLDivElement>(null);
+  const doubt1Ref = useRef<HTMLDivElement>(null);
+  const doubt2Ref = useRef<HTMLDivElement>(null);
+  const doubt3Ref = useRef<HTMLDivElement>(null);
+  const marketingTitleRef = useRef<HTMLDivElement>(null);
+  const marketingSubRef = useRef<HTMLDivElement>(null);
+  const valueRef = useRef<HTMLDivElement>(null);
+  const timeline1Ref = useRef<HTMLDivElement>(null);
+  const timeline2Ref = useRef<HTMLDivElement>(null);
+  const timeline3Ref = useRef<HTMLDivElement>(null);
+  const timeline4Ref = useRef<HTMLDivElement>(null);
+  const timeline5Ref = useRef<HTMLDivElement>(null);
   const [characters, setCharacters] = useState<CharacterWithDot[]>([]);
 
   useEffect(() => {
@@ -342,6 +354,116 @@ export default function AppleDemoPage() {
           { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: "power3.out" },
           2.5
         );
+
+      // Section 4 fade out on scroll
+      gsap.to(section4Ref.current, {
+        opacity: 0,
+        scale: 0.95,
+        scrollTrigger: {
+          trigger: section4Ref.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+          pin: false,
+        },
+      });
+
+      // Section 5 fade in on scroll
+      gsap.fromTo(
+        section5Ref.current,
+        {
+          opacity: 0,
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scrollTrigger: {
+            trigger: section5Ref.current,
+            start: "top bottom",
+            end: "top center",
+            scrub: 1,
+          },
+        }
+      );
+
+      // Section 5 animations
+      const section5Timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section5Ref.current,
+          start: "top center",
+          end: "bottom bottom",
+          toggleActions: "play none none none",
+        },
+      });
+
+      section5Timeline
+        .fromTo(
+          doubt1Ref.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          0
+        )
+        .fromTo(
+          doubt2Ref.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          0.3
+        )
+        .fromTo(
+          doubt3Ref.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          0.6
+        )
+        .fromTo(
+          marketingTitleRef.current,
+          { opacity: 0, scale: 0.95 },
+          { opacity: 1, scale: 1, duration: 1.0, ease: "back.out(1.2)" },
+          1.2
+        )
+        .fromTo(
+          marketingSubRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          1.8
+        )
+        .fromTo(
+          valueRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          2.4
+        )
+        .fromTo(
+          timeline1Ref.current,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+          3.0
+        )
+        .fromTo(
+          timeline2Ref.current,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+          3.3
+        )
+        .fromTo(
+          timeline3Ref.current,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+          3.6
+        )
+        .fromTo(
+          timeline4Ref.current,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+          3.9
+        )
+        .fromTo(
+          timeline5Ref.current,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
+          4.2
+        );
     });
 
     return () => ctx.revert();
@@ -610,6 +732,167 @@ export default function AppleDemoPage() {
                 <br />
                 손님이 없는 걸까요?
               </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: 5T Timeline */}
+      <section
+        ref={section5Ref}
+        className="relative min-h-screen w-full flex items-center justify-center py-20"
+      >
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gray-200 rounded-full blur-3xl"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-5xl px-8 space-y-16">
+          {/* Opening question */}
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 mb-8">
+              그럼 마케팅이란 무엇일까요?
+            </h2>
+          </div>
+
+          {/* Doubts - speech bubble style */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+            {/* Doubt 1 */}
+            <div ref={doubt1Ref} className="opacity-0">
+              <div className="relative bg-white rounded-2xl px-6 py-4 shadow-md border border-gray-200">
+                <p className="text-base md:text-lg font-light text-gray-600 text-center">
+                  정말 효과 있을까..?
+                </p>
+              </div>
+            </div>
+
+            {/* Doubt 2 */}
+            <div ref={doubt2Ref} className="opacity-0">
+              <div className="relative bg-white rounded-2xl px-6 py-4 shadow-md border border-gray-200">
+                <p className="text-base md:text-lg font-light text-gray-600 text-center">
+                  평생 광고비 써야하는거 아니야…?
+                </p>
+              </div>
+            </div>
+
+            {/* Doubt 3 */}
+            <div ref={doubt3Ref} className="opacity-0">
+              <div className="relative bg-white rounded-2xl px-6 py-4 shadow-md border border-gray-200">
+                <p className="text-base md:text-lg font-light text-gray-600 text-center">
+                  한다고 정말 달라질까..?
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Marketing definition - emphasized */}
+          <div className="text-center space-y-6 py-12">
+            <div ref={marketingTitleRef} className="opacity-0">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+                마케팅,
+              </h2>
+            </div>
+            <div ref={marketingSubRef} className="opacity-0">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-800">
+                매출 성장의 원동력이 되어야 합니다.
+              </h3>
+            </div>
+          </div>
+
+          {/* Value foundation */}
+          <div ref={valueRef} className="opacity-0 text-center py-8">
+            <p className="text-xl md:text-2xl font-light text-gray-600">
+              기반이 되는 가치
+            </p>
+          </div>
+
+          {/* 5T Timeline */}
+          <div className="relative py-12">
+            {/* Vertical line */}
+            <div className="absolute left-8 md:left-12 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+
+            <div className="space-y-12">
+              {/* Timeline 1: Trend */}
+              <div
+                ref={timeline1Ref}
+                className="opacity-0 relative pl-20 md:pl-28"
+              >
+                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-blue-500 border-4 border-white shadow-lg"></div>
+                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                    Trend
+                  </h4>
+                  <p className="text-lg md:text-xl font-light text-gray-600">
+                    트렌드
+                  </p>
+                </div>
+              </div>
+
+              {/* Timeline 2: Tech */}
+              <div
+                ref={timeline2Ref}
+                className="opacity-0 relative pl-20 md:pl-28"
+              >
+                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-purple-500 border-4 border-white shadow-lg"></div>
+                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                    Tech
+                  </h4>
+                  <p className="text-lg md:text-xl font-light text-gray-600">
+                    기술
+                  </p>
+                </div>
+              </div>
+
+              {/* Timeline 3: Tactics */}
+              <div
+                ref={timeline3Ref}
+                className="opacity-0 relative pl-20 md:pl-28"
+              >
+                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-green-500 border-4 border-white shadow-lg"></div>
+                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                    Tactics
+                  </h4>
+                  <p className="text-lg md:text-xl font-light text-gray-600">
+                    전략
+                  </p>
+                </div>
+              </div>
+
+              {/* Timeline 4: Target */}
+              <div
+                ref={timeline4Ref}
+                className="opacity-0 relative pl-20 md:pl-28"
+              >
+                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-orange-500 border-4 border-white shadow-lg"></div>
+                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                    Target
+                  </h4>
+                  <p className="text-lg md:text-xl font-light text-gray-600">
+                    목표
+                  </p>
+                </div>
+              </div>
+
+              {/* Timeline 5: Talk */}
+              <div
+                ref={timeline5Ref}
+                className="opacity-0 relative pl-20 md:pl-28"
+              >
+                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-pink-500 border-4 border-white shadow-lg"></div>
+                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
+                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                    Talk
+                  </h4>
+                  <p className="text-lg md:text-xl font-light text-gray-600">
+                    소통
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
