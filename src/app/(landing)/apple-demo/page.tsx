@@ -46,6 +46,16 @@ export default function AppleDemoPage() {
   const timeline3Ref = useRef<HTMLDivElement>(null);
   const timeline4Ref = useRef<HTMLDivElement>(null);
   const timeline5Ref = useRef<HTMLDivElement>(null);
+  const section6Ref = useRef<HTMLDivElement>(null);
+  const storyTitleRef = useRef<HTMLDivElement>(null);
+  const story1Ref = useRef<HTMLDivElement>(null);
+  const story2Ref = useRef<HTMLDivElement>(null);
+  const story3Ref = useRef<HTMLDivElement>(null);
+  const story4Ref = useRef<HTMLDivElement>(null);
+  const story5Ref = useRef<HTMLDivElement>(null);
+  const story6Ref = useRef<HTMLDivElement>(null);
+  const story7Ref = useRef<HTMLDivElement>(null);
+  const successTitleRef = useRef<HTMLDivElement>(null);
   const [characters, setCharacters] = useState<CharacterWithDot[]>([]);
 
   useEffect(() => {
@@ -463,6 +473,104 @@ export default function AppleDemoPage() {
           { opacity: 0, x: -30 },
           { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" },
           4.2
+        );
+
+      // Section 5 fade out on scroll
+      gsap.to(section5Ref.current, {
+        opacity: 0,
+        scale: 0.95,
+        scrollTrigger: {
+          trigger: section5Ref.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+          pin: false,
+        },
+      });
+
+      // Section 6 fade in on scroll
+      gsap.fromTo(
+        section6Ref.current,
+        {
+          opacity: 0,
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scrollTrigger: {
+            trigger: section6Ref.current,
+            start: "top bottom",
+            end: "top center",
+            scrub: 1,
+          },
+        }
+      );
+
+      // Section 6 animations
+      const section6Timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section6Ref.current,
+          start: "top center",
+          end: "bottom bottom",
+          toggleActions: "play none none none",
+        },
+      });
+
+      section6Timeline
+        .fromTo(
+          storyTitleRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
+          0
+        )
+        .fromTo(
+          story1Ref.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          0.5
+        )
+        .fromTo(
+          story2Ref.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          0.7
+        )
+        .fromTo(
+          story3Ref.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          0.9
+        )
+        .fromTo(
+          story4Ref.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          1.1
+        )
+        .fromTo(
+          story5Ref.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          1.3
+        )
+        .fromTo(
+          story6Ref.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          1.5
+        )
+        .fromTo(
+          story7Ref.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          1.7
+        )
+        .fromTo(
+          successTitleRef.current,
+          { opacity: 0, scale: 0.95 },
+          { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.2)" },
+          2.5
         );
     });
 
@@ -894,6 +1002,125 @@ export default function AppleDemoPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Success Stories */}
+      <section
+        ref={section6Ref}
+        className="relative min-h-screen w-full flex items-center justify-center py-20"
+      >
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-yellow-200 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-200 rounded-full blur-3xl"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-7xl px-8 space-y-16">
+          {/* Title */}
+          <div ref={storyTitleRef} className="opacity-0 text-center">
+            <p className="text-lg md:text-xl text-gray-500 mb-4">
+              (*우리의 이야기 입니다)
+            </p>
+          </div>
+
+          {/* Stories Grid - Masonry style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {/* Story 1 */}
+            <div ref={story1Ref} className="opacity-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-5xl text-gray-300 mb-4">"</div>
+                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                  장사하면서 눈물 쏙 뺀 날도 많았는데, 요즘은 가족들이랑 웃는
+                  날이 더 많아요!
+                </p>
+              </div>
+            </div>
+
+            {/* Story 2 */}
+            <div ref={story2Ref} className="opacity-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-5xl text-gray-300 mb-4">"</div>
+                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                  가게 문 닫을까 고민하던 때가 엊그제 같은데, 지금은 매일매일
+                  정신없어요.
+                </p>
+              </div>
+            </div>
+
+            {/* Story 3 */}
+            <div ref={story3Ref} className="opacity-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-5xl text-gray-300 mb-4">"</div>
+                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                  부모님에게 걱정만 끼치던 저였는데 이젠 가끔 용돈도
+                  드리네요..ㅋㅎㅋㅎ
+                  <br />
+                  정말 작지만 큰 변화라고 생각합니다!
+                  <br />
+                  부모님도 응원해주시니 더 힘이 나는 거 같아요!
+                </p>
+                <p className="text-sm text-gray-400 mt-4 italic">
+                  (가게 매출이 올라서 부모님 용돈도 가끔 드립니다..)
+                </p>
+              </div>
+            </div>
+
+            {/* Story 4 */}
+            <div ref={story4Ref} className="opacity-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-5xl text-gray-300 mb-4">"</div>
+                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                  요즘은 매출 오른 걸 핑계 삼아 장난감 하나씩 사주네요ㅎㅎ
+                  <br />
+                  가족도 분위기가 좋아진거 같아서 너무 행복합니다 ㅎㅎ
+                </p>
+              </div>
+            </div>
+
+            {/* Story 5 */}
+            <div ref={story5Ref} className="opacity-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-5xl text-gray-300 mb-4">"</div>
+                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                  힘들 때마다 가족 생각하면서 버텼는데, 이제는 가족들한테 자랑할
+                  수 있는 가게가 됐어요
+                </p>
+              </div>
+            </div>
+
+            {/* Story 6 */}
+            <div ref={story6Ref} className="opacity-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-5xl text-gray-300 mb-4">"</div>
+                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                  작은 가게지만 가족들의 희망이 되어가고 있어요. 대표님 덕에
+                  하루하루 감사하며 일하고 있습니다.
+                </p>
+              </div>
+            </div>
+
+            {/* Story 7 */}
+            <div ref={story7Ref} className="opacity-0">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+                <div className="text-5xl text-gray-300 mb-4">"</div>
+                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                  아직 완벽하진 않지만, 그래도 매출 걱정에 밤새던 일은
+                  없어졌어요. 조금씩 좋아지고 있다는 게 느껴집니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Success statement */}
+          <div ref={successTitleRef} className="opacity-0 text-center py-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+              실제로 많은 사장님들의
+              <br />
+              성공을 도왔습니다
+            </h2>
           </div>
         </div>
       </section>
