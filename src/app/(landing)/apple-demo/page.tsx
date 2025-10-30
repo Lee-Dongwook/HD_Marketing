@@ -15,6 +15,7 @@ export default function AppleDemoPage() {
   const section1Ref = useRef<HTMLDivElement>(null);
   const section2Ref = useRef<HTMLDivElement>(null);
   const section3Ref = useRef<HTMLDivElement>(null);
+  const section4Ref = useRef<HTMLDivElement>(null);
   const line1Ref = useRef<HTMLDivElement>(null);
   const line2Ref = useRef<HTMLDivElement>(null);
   const line3Ref = useRef<HTMLDivElement>(null);
@@ -27,6 +28,12 @@ export default function AppleDemoPage() {
   const answer2Ref = useRef<HTMLDivElement>(null);
   const answer3Ref = useRef<HTMLDivElement>(null);
   const answer4Ref = useRef<HTMLDivElement>(null);
+  const reason1Ref = useRef<HTMLDivElement>(null);
+  const reason2Ref = useRef<HTMLDivElement>(null);
+  const reason3Ref = useRef<HTMLDivElement>(null);
+  const reason4Ref = useRef<HTMLDivElement>(null);
+  const emphasisRef = useRef<HTMLDivElement>(null);
+  const finalQuestionRef = useRef<HTMLDivElement>(null);
   const [characters, setCharacters] = useState<CharacterWithDot[]>([]);
 
   useEffect(() => {
@@ -255,6 +262,86 @@ export default function AppleDemoPage() {
           { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
           2.3
         );
+
+      // Section 3 fade out on scroll
+      gsap.to(section3Ref.current, {
+        opacity: 0,
+        scale: 0.95,
+        scrollTrigger: {
+          trigger: section3Ref.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+          pin: false,
+        },
+      });
+
+      // Section 4 fade in on scroll
+      gsap.fromTo(
+        section4Ref.current,
+        {
+          opacity: 0,
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scrollTrigger: {
+            trigger: section4Ref.current,
+            start: "top bottom",
+            end: "top center",
+            scrub: 1,
+          },
+        }
+      );
+
+      // Section 4 animations
+      const section4Timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section4Ref.current,
+          start: "top center",
+          end: "bottom bottom",
+          toggleActions: "play none none none",
+        },
+      });
+
+      section4Timeline
+        .fromTo(
+          reason1Ref.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          0
+        )
+        .fromTo(
+          reason2Ref.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          0.3
+        )
+        .fromTo(
+          reason3Ref.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          0.6
+        )
+        .fromTo(
+          reason4Ref.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          0.9
+        )
+        .fromTo(
+          emphasisRef.current,
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 1.0, ease: "back.out(1.2)" },
+          1.5
+        )
+        .fromTo(
+          finalQuestionRef.current,
+          { opacity: 0, scale: 0.95, y: 30 },
+          { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: "power3.out" },
+          2.5
+        );
     });
 
     return () => ctx.revert();
@@ -447,6 +534,82 @@ export default function AppleDemoPage() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Marketing Message */}
+      <section
+        ref={section4Ref}
+        className="relative min-h-screen w-full flex items-center justify-center py-20"
+      >
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gray-200 rounded-full blur-3xl"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-6xl px-8 space-y-16">
+          {/* Reasons - with checkmark style */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {/* Reason 1 */}
+            <div ref={reason1Ref} className="opacity-0 flex items-start gap-4">
+              <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gray-400 mt-3"></div>
+              <p className="text-lg md:text-xl lg:text-2xl font-light text-gray-700 leading-relaxed">
+                비수기에도 안정적인 매출을 유지하고,
+              </p>
+            </div>
+
+            {/* Reason 2 */}
+            <div ref={reason2Ref} className="opacity-0 flex items-start gap-4">
+              <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gray-400 mt-3"></div>
+              <p className="text-lg md:text-xl lg:text-2xl font-light text-gray-700 leading-relaxed">
+                위기에 대비하기 위해서
+              </p>
+            </div>
+
+            {/* Reason 3 */}
+            <div ref={reason3Ref} className="opacity-0 flex items-start gap-4">
+              <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gray-400 mt-3"></div>
+              <p className="text-lg md:text-xl lg:text-2xl font-light text-gray-700 leading-relaxed">
+                내 가게를 찾고, 기억하게 하기 위해서
+              </p>
+            </div>
+
+            {/* Reason 4 */}
+            <div ref={reason4Ref} className="opacity-0 flex items-start gap-4">
+              <div className="flex-shrink-0 w-2 h-2 rounded-full bg-gray-400 mt-3"></div>
+              <p className="text-lg md:text-xl lg:text-2xl font-light text-gray-700 leading-relaxed">
+                우리 가게만의 특별한 점을 어필하기 위해서
+              </p>
+            </div>
+          </div>
+
+          {/* Marketing emphasis */}
+          <div ref={emphasisRef} className="opacity-0 text-center py-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-gray-900 leading-relaxed">
+              마케팅은 필수입니다.
+            </h2>
+          </div>
+
+          {/* Consumer era statement */}
+          <div className="text-center py-8">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-normal text-gray-800 leading-relaxed">
+              이제는 소비자가 선택하는 시대입니다.
+            </p>
+          </div>
+
+          {/* Final provocative question */}
+          <div ref={finalQuestionRef} className="opacity-0 text-center py-16">
+            <div className="bg-white/50 backdrop-blur-sm rounded-3xl px-12 md:px-16 py-12 md:py-16 shadow-lg border border-gray-200">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-800 leading-relaxed">
+                정말 사장님 가게가
+                <br />
+                맛이 없어서
+                <br />
+                손님이 없는 걸까요?
+              </h1>
             </div>
           </div>
         </div>
