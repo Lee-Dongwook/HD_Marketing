@@ -1508,6 +1508,62 @@ export default function AppleDemoPage() {
           <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-200 rounded-full blur-3xl"></div>
         </div>
 
+        {/* Floating animation styles */}
+        <style jsx>{`
+          @keyframes float {
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-20px);
+            }
+          }
+
+          .float-1 {
+            animation: float 6s ease-in-out infinite;
+          }
+
+          .float-2 {
+            animation: float 7s ease-in-out infinite;
+            animation-delay: 0.5s;
+          }
+
+          .float-3 {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+          }
+
+          .float-4 {
+            animation: float 6.5s ease-in-out infinite;
+            animation-delay: 1.5s;
+          }
+
+          .float-5 {
+            animation: float 7.5s ease-in-out infinite;
+            animation-delay: 2s;
+          }
+
+          .float-6 {
+            animation: float 8.5s ease-in-out infinite;
+            animation-delay: 2.5s;
+          }
+
+          .float-7 {
+            animation: float 7s ease-in-out infinite;
+            animation-delay: 3s;
+          }
+
+          .scrollbar-hidden::-webkit-scrollbar {
+            display: none;
+          }
+
+          .scrollbar-hidden {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}</style>
+
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl px-8 space-y-16">
           {/* Title */}
@@ -1517,90 +1573,174 @@ export default function AppleDemoPage() {
             </p>
           </div>
 
-          {/* Stories Grid - Masonry style */}
+          {/* Stories Grid - Unified height with floating effect */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Story 1 */}
-            <div ref={story1Ref} className="opacity-0">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <div className="text-5xl text-gray-300 mb-4">"</div>
-                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                  장사하면서 눈물 쏙 뺀 날도 많았는데, 요즘은 가족들이랑 웃는
-                  날이 더 많아요!
-                </p>
+            <div ref={story1Ref} className="opacity-0 float-1">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                {/* Avatar and Info */}
+                <div className="flex flex-col items-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center shadow-lg mb-2">
+                    <span className="text-3xl">👩‍🍳</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-600">
+                    35세 치킨집 사장님
+                  </p>
+                </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                  <div className="text-4xl text-gray-300 mb-3">"</div>
+                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    장사하면서 눈물 쏙 뺀 날도 많았는데, 요즘은 가족들이랑 웃는
+                    날이 더 많아요!
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Story 2 */}
-            <div ref={story2Ref} className="opacity-0">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <div className="text-5xl text-gray-300 mb-4">"</div>
-                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                  가게 문 닫을까 고민하던 때가 엊그제 같은데, 지금은 매일매일
-                  정신없어요.
-                </p>
+            <div ref={story2Ref} className="opacity-0 float-2">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                {/* Avatar and Info */}
+                <div className="flex flex-col items-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg mb-2">
+                    <span className="text-3xl">☕</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-600">
+                    28세 카페 사장님
+                  </p>
+                </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                  <div className="text-4xl text-gray-300 mb-3">"</div>
+                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    가게 문 닫을까 고민하던 때가 엊그제 같은데, 지금은 매일매일
+                    정신없어요.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Story 3 */}
-            <div ref={story3Ref} className="opacity-0">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <div className="text-5xl text-gray-300 mb-4">"</div>
-                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                  부모님에게 걱정만 끼치던 저였는데 이젠 가끔 용돈도
-                  드리네요..ㅋㅎㅋㅎ
-                  <br />
-                  정말 작지만 큰 변화라고 생각합니다!
-                  <br />
-                  부모님도 응원해주시니 더 힘이 나는 거 같아요!
-                </p>
-                <p className="text-sm text-gray-400 mt-4 italic">
-                  (가게 매출이 올라서 부모님 용돈도 가끔 드립니다..)
-                </p>
+            <div ref={story3Ref} className="opacity-0 float-3">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                {/* Avatar and Info */}
+                <div className="flex flex-col items-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-lg mb-2">
+                    <span className="text-3xl">🍜</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-600">
+                    42세 분식집 사장님
+                  </p>
+                </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                  <div className="text-4xl text-gray-300 mb-3">"</div>
+                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    부모님에게 걱정만 끼치던 저였는데 이젠 가끔 용돈도
+                    드리네요..ㅋㅎㅋㅎ
+                    <br />
+                    정말 작지만 큰 변화라고 생각합니다!
+                    <br />
+                    부모님도 응원해주시니 더 힘이 나는 거 같아요!
+                  </p>
+                  <p className="text-sm text-gray-400 mt-4 italic">
+                    (가게 매출이 올라서 부모님 용돈도 가끔 드립니다..)
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Story 4 */}
-            <div ref={story4Ref} className="opacity-0">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <div className="text-5xl text-gray-300 mb-4">"</div>
-                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                  요즘은 매출 오른 걸 핑계 삼아 장난감 하나씩 사주네요ㅎㅎ
-                  <br />
-                  가족도 분위기가 좋아진거 같아서 너무 행복합니다 ㅎㅎ
-                </p>
+            <div ref={story4Ref} className="opacity-0 float-4">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                {/* Avatar and Info */}
+                <div className="flex flex-col items-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center shadow-lg mb-2">
+                    <span className="text-3xl">🍕</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-600">
+                    31세 피자집 사장님
+                  </p>
+                </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                  <div className="text-4xl text-gray-300 mb-3">"</div>
+                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    요즘은 매출 오른 걸 핑계 삼아 장난감 하나씩 사주네요ㅎㅎ
+                    <br />
+                    가족도 분위기가 좋아진거 같아서 너무 행복합니다 ㅎㅎ
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Story 5 */}
-            <div ref={story5Ref} className="opacity-0">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <div className="text-5xl text-gray-300 mb-4">"</div>
-                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                  힘들 때마다 가족 생각하면서 버텼는데, 이제는 가족들한테 자랑할
-                  수 있는 가게가 됐어요
-                </p>
+            <div ref={story5Ref} className="opacity-0 float-5">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                {/* Avatar and Info */}
+                <div className="flex flex-col items-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-lg mb-2">
+                    <span className="text-3xl">🥘</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-600">
+                    39세 한식당 사장님
+                  </p>
+                </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                  <div className="text-4xl text-gray-300 mb-3">"</div>
+                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    힘들 때마다 가족 생각하면서 버텼는데, 이제는 가족들한테
+                    자랑할 수 있는 가게가 됐어요
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Story 6 */}
-            <div ref={story6Ref} className="opacity-0">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <div className="text-5xl text-gray-300 mb-4">"</div>
-                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                  작은 가게지만 가족들의 희망이 되어가고 있어요. 대표님 덕에
-                  하루하루 감사하며 일하고 있습니다.
-                </p>
+            <div ref={story6Ref} className="opacity-0 float-6">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                {/* Avatar and Info */}
+                <div className="flex flex-col items-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center shadow-lg mb-2">
+                    <span className="text-3xl">🍰</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-600">
+                    26세 베이커리 사장님
+                  </p>
+                </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                  <div className="text-4xl text-gray-300 mb-3">"</div>
+                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    작은 가게지만 가족들의 희망이 되어가고 있어요. 대표님 덕에
+                    하루하루 감사하며 일하고 있습니다.
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Story 7 */}
-            <div ref={story7Ref} className="opacity-0">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
-                <div className="text-5xl text-gray-300 mb-4">"</div>
-                <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                  아직 완벽하진 않지만, 그래도 매출 걱정에 밤새던 일은
-                  없어졌어요. 조금씩 좋아지고 있다는 게 느껴집니다.
-                </p>
+            <div ref={story7Ref} className="opacity-0 float-7">
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                {/* Avatar and Info */}
+                <div className="flex flex-col items-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center shadow-lg mb-2">
+                    <span className="text-3xl">🍗</span>
+                  </div>
+                  <p className="text-sm font-medium text-gray-600">
+                    44세 호프집 사장님
+                  </p>
+                </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                  <div className="text-4xl text-gray-300 mb-3">"</div>
+                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    아직 완벽하진 않지만, 그래도 매출 걱정에 밤새던 일은
+                    없어졌어요. 조금씩 좋아지고 있다는 게 느껴집니다.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
