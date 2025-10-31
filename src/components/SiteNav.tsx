@@ -42,11 +42,18 @@ export default function SiteNav() {
     return (
       <>
         <header
-          className="sticky top-0 left-0 backdrop-blur-md flex items-center justify-end w-full h-[82px] p-8 text-[12px] leading-[16.08px] font-sans transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)] z-50"
+          className="sticky top-0 left-0 backdrop-blur-md flex items-center justify-between w-full h-[82px] p-8 text-[12px] leading-[16.08px] font-sans transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)] z-50"
           style={{
             background: "rgba(35, 43, 64, 0.85)",
           }}
         >
+          <Link href="/" className="flex items-center">
+            <img
+              src="/images/HDLogo.png"
+              alt="HD Logo"
+              className="h-28 w-auto"
+            />
+          </Link>
           <button
             type="button"
             aria-label="메뉴 열기"
@@ -56,12 +63,6 @@ export default function SiteNav() {
           >
             <SiteNavHamburgerIcon className="h-8 w-8 text-white" />
           </button>
-          <div aria-hidden className="flex-1" />
-          <img
-            src={`${NEXT_PUBLIC_CDN_BASE}/images/AddeepLogo.png`}
-            alt="logo"
-            className="h-9 w-10"
-          />
           {/* 오버레이는 Portal로 띄워서 나머지 레이아웃에 영향 X */}
           {open &&
             typeof window !== "undefined" &&
@@ -110,7 +111,9 @@ export default function SiteNav() {
           background: "rgba(35, 43, 64, 0.85)",
         }}
       >
-        <div></div>
+        <Link href="/" className="flex items-center">
+          <img src="/images/HDLogo.png" alt="HD Logo" className="h-32 w-auto" />
+        </Link>
         <div className="flex h-14 items-center justify-center">
           <div className="flex flex-row items-center gap-4">
             {NAV.map((it) => {
