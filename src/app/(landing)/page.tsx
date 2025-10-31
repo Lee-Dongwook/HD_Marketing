@@ -301,9 +301,6 @@ export default function AppleDemoPage() {
   const line7Ref = useRef<HTMLDivElement>(null);
   const questionRef = useRef<HTMLDivElement>(null);
   const answer1Ref = useRef<HTMLDivElement>(null);
-  const answer2Ref = useRef<HTMLDivElement>(null);
-  const answer3Ref = useRef<HTMLDivElement>(null);
-  const answer4Ref = useRef<HTMLDivElement>(null);
   const reason1Ref = useRef<HTMLDivElement>(null);
   const reason2Ref = useRef<HTMLDivElement>(null);
   const reason3Ref = useRef<HTMLDivElement>(null);
@@ -553,27 +550,9 @@ export default function AppleDemoPage() {
         )
         .fromTo(
           answer1Ref.current,
-          { opacity: 0, x: -30 },
-          { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+          { opacity: 0, x: 30 },
+          { opacity: 1, x: 0, duration: 1.0, ease: "power2.out" },
           0.8
-        )
-        .fromTo(
-          answer2Ref.current,
-          { opacity: 0, x: -30 },
-          { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
-          1.3
-        )
-        .fromTo(
-          answer3Ref.current,
-          { opacity: 0, x: -30 },
-          { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
-          1.8
-        )
-        .fromTo(
-          answer4Ref.current,
-          { opacity: 0, x: -30 },
-          { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
-          2.3
         );
 
       // Section 3 fade out on scroll
@@ -1215,10 +1194,10 @@ export default function AppleDemoPage() {
 
         {/* Chat content section */}
         <div className="relative z-10 w-full max-w-4xl px-8 space-y-8">
-          {/* Question 1 - 아줌마 (Left) */}
+          {/* Question - 사장님들 (Left) */}
           <div ref={questionRef} className="opacity-0 flex items-start gap-4">
-            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-pink-200 to-pink-300 flex items-center justify-center shadow-lg">
-              <span className="text-2xl">👩</span>
+            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center shadow-lg">
+              <span className="text-2xl">👨‍👩‍👦</span>
             </div>
             <div className="flex-1 max-w-md">
               <div className="bg-white rounded-3xl rounded-tl-none px-6 py-4 shadow-md border border-gray-200">
@@ -1229,77 +1208,15 @@ export default function AppleDemoPage() {
             </div>
           </div>
 
-          {/* Answer 1 - HD (Right) */}
-          <div
-            ref={answer1Ref}
-            className="opacity-0 flex items-start gap-4 justify-end"
-          >
-            <div className="flex-1 max-w-md">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl rounded-tr-none px-6 py-4 shadow-md ml-auto">
-                <p className="text-lg md:text-xl font-normal text-white leading-relaxed">
-                  잘 모르겠습니다..
-                </p>
-              </div>
-            </div>
-            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg">
-              <span className="text-2xl">👨‍💼</span>
-            </div>
-          </div>
-
-          {/* Question 2 - 아저씨 (Left) */}
-          <div ref={answer2Ref} className="opacity-0 flex items-start gap-4">
-            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-amber-200 to-amber-300 flex items-center justify-center shadow-lg">
-              <span className="text-2xl">👨</span>
-            </div>
-            <div className="flex-1 max-w-md">
-              <div className="bg-white rounded-3xl rounded-tl-none px-6 py-4 shadow-md border border-gray-200">
-                <p className="text-lg md:text-xl font-normal text-gray-800 leading-relaxed">
-                  그럼 정말 몰라서 못 오는 건가요?
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Answer 2 - HD (Right) */}
-          <div
-            ref={answer3Ref}
-            className="opacity-0 flex items-start gap-4 justify-end"
-          >
-            <div className="flex-1 max-w-md">
-              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl rounded-tr-none px-6 py-4 shadow-md ml-auto">
-                <p className="text-lg md:text-xl font-normal text-white leading-relaxed">
-                  네, 맞습니다. 현시점 모든 가게와 스토어의 제품은 상향 평준화
-                  됐지만...
-                </p>
-              </div>
-            </div>
-            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg">
-              <span className="text-2xl">👨‍💼</span>
-            </div>
-          </div>
-
-          {/* Question 3 - 젊은 층 (Left) */}
-          <div ref={answer4Ref} className="opacity-0">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center shadow-lg">
-                <span className="text-2xl">👦</span>
-              </div>
-              <div className="flex-1 max-w-md">
-                <div className="bg-white rounded-3xl rounded-tl-none px-6 py-4 shadow-md border border-gray-200">
-                  <p className="text-lg md:text-xl font-normal text-gray-800 leading-relaxed">
-                    그럼 어떻게 해야 하나요?
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Final Answer - HD (Right) - Combined */}
+          {/* Final Answer - HD (Right) */}
+          <div ref={answer1Ref} className="opacity-0">
             <div className="flex items-start gap-4 justify-end">
               <div className="flex-1 max-w-md">
                 <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl rounded-tr-none px-6 py-4 shadow-md ml-auto">
                   <p className="text-lg md:text-xl font-normal text-white leading-relaxed">
-                    그만큼 종사자가 너무 많아졌고 인터넷의 발달로 잘되는
-                    업체들이 더 잘될 수 밖에 없습니다.
+                    잘 모르겠습니다.. 네, 맞습니다. 현시점 모든 가게와 스토어의
+                    제품은 상향 평준화 됐지만 그만큼 종사자가 너무 많아졌고
+                    인터넷의 발달로 잘되는 업체들이 더 잘될 수 밖에 없습니다.
                   </p>
                 </div>
               </div>
