@@ -1202,10 +1202,10 @@ export default function AppleDemoPage() {
         </div>
       </section>
 
-      {/* Section 3: Q&A */}
+      {/* Section 3: Q&A - Chat Style */}
       <section
         ref={section3Ref}
-        className="relative min-h-screen w-full flex items-center justify-center"
+        className="relative min-h-screen w-full flex items-center justify-center py-20"
       >
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-20">
@@ -1213,57 +1213,98 @@ export default function AppleDemoPage() {
           <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-yellow-200 rounded-full blur-3xl"></div>
         </div>
 
-        {/* Q&A content section */}
-        <div className="relative z-10 w-full max-w-5xl px-8 space-y-12">
-          {/* Question Box */}
-          <div ref={questionRef} className="opacity-0">
-            <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl px-8 md:px-12 py-8 md:py-10 shadow-2xl border-2 border-blue-200">
-              <div className="absolute -top-6 left-8 bg-blue-500 text-white px-6 py-2 rounded-full font-bold text-lg shadow-lg">
-                Q
+        {/* Chat content section */}
+        <div className="relative z-10 w-full max-w-4xl px-8 space-y-8">
+          {/* Question 1 - 아줌마 (Left) */}
+          <div ref={questionRef} className="opacity-0 flex items-start gap-4">
+            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-pink-200 to-pink-300 flex items-center justify-center shadow-lg">
+              <span className="text-2xl">👩</span>
+            </div>
+            <div className="flex-1 max-w-md">
+              <div className="bg-white rounded-3xl rounded-tl-none px-6 py-4 shadow-md border border-gray-200">
+                <p className="text-lg md:text-xl font-normal text-gray-800 leading-relaxed">
+                  대표님! 저희 가게는 왜 사람이 안 올까요?
+                </p>
               </div>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-800 text-center leading-relaxed pt-4">
-                대표님! 저희 가게는 왜 사람이 안 올까요?
-              </p>
             </div>
           </div>
 
-          {/* Answer Section */}
-          <div className="space-y-6 md:space-y-8 pl-0 md:pl-8">
-            {/* A Badge */}
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
-                A
+          {/* Answer 1 - HD (Right) */}
+          <div
+            ref={answer1Ref}
+            className="opacity-0 flex items-start gap-4 justify-end"
+          >
+            <div className="flex-1 max-w-md">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl rounded-tr-none px-6 py-4 shadow-md ml-auto">
+                <p className="text-lg md:text-xl font-normal text-white leading-relaxed">
+                  잘 모르겠습니다..
+                </p>
               </div>
-              <div className="flex-1 space-y-6">
-                {/* Answer 1 */}
-                <div ref={answer1Ref} className="opacity-0">
-                  <p className="text-xl md:text-2xl lg:text-3xl font-light text-gray-700 leading-relaxed">
-                    잘 모르겠습니다..
-                  </p>
-                </div>
+            </div>
+            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg">
+              <span className="text-2xl">👨‍💼</span>
+            </div>
+          </div>
 
-                {/* Answer 2 */}
-                <div ref={answer2Ref} className="opacity-0">
-                  <p className="text-xl md:text-2xl lg:text-3xl font-light text-gray-700 leading-relaxed">
-                    정말 몰라서 못 옵니다.
-                  </p>
-                </div>
+          {/* Question 2 - 아저씨 (Left) */}
+          <div ref={answer2Ref} className="opacity-0 flex items-start gap-4">
+            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-amber-200 to-amber-300 flex items-center justify-center shadow-lg">
+              <span className="text-2xl">👨</span>
+            </div>
+            <div className="flex-1 max-w-md">
+              <div className="bg-white rounded-3xl rounded-tl-none px-6 py-4 shadow-md border border-gray-200">
+                <p className="text-lg md:text-xl font-normal text-gray-800 leading-relaxed">
+                  그럼 정말 몰라서 못 오는 건가요?
+                </p>
+              </div>
+            </div>
+          </div>
 
-                {/* Answer 3 */}
-                <div ref={answer3Ref} className="opacity-0">
-                  <p className="text-xl md:text-2xl lg:text-3xl font-light text-gray-700 leading-relaxed">
-                    현시점 모든 가게와 스토어의 제품은 상향 평준화 됐지만
-                  </p>
-                </div>
+          {/* Answer 2 - HD (Right) */}
+          <div
+            ref={answer3Ref}
+            className="opacity-0 flex items-start gap-4 justify-end"
+          >
+            <div className="flex-1 max-w-md">
+              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl rounded-tr-none px-6 py-4 shadow-md ml-auto">
+                <p className="text-lg md:text-xl font-normal text-white leading-relaxed">
+                  네, 맞습니다. 현시점 모든 가게와 스토어의 제품은 상향 평준화
+                  됐지만...
+                </p>
+              </div>
+            </div>
+            <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg">
+              <span className="text-2xl">👨‍💼</span>
+            </div>
+          </div>
 
-                {/* Answer 4 */}
-                <div ref={answer4Ref} className="opacity-0">
-                  <p className="text-xl md:text-2xl lg:text-3xl font-light text-gray-700 leading-relaxed">
-                    그만큼 종사자가 너무 많아졌고 인터넷의 발달로
-                    <br />
-                    잘되는 업체들이 더 잘될 수 밖에 없습니다.
+          {/* Question 3 - 젊은 층 (Left) */}
+          <div ref={answer4Ref} className="opacity-0">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center shadow-lg">
+                <span className="text-2xl">👦</span>
+              </div>
+              <div className="flex-1 max-w-md">
+                <div className="bg-white rounded-3xl rounded-tl-none px-6 py-4 shadow-md border border-gray-200">
+                  <p className="text-lg md:text-xl font-normal text-gray-800 leading-relaxed">
+                    그럼 어떻게 해야 하나요?
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Final Answer - HD (Right) - Combined */}
+            <div className="flex items-start gap-4 justify-end">
+              <div className="flex-1 max-w-md">
+                <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl rounded-tr-none px-6 py-4 shadow-md ml-auto">
+                  <p className="text-lg md:text-xl font-normal text-white leading-relaxed">
+                    그만큼 종사자가 너무 많아졌고 인터넷의 발달로 잘되는
+                    업체들이 더 잘될 수 밖에 없습니다.
+                  </p>
+                </div>
+              </div>
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg">
+                <span className="text-2xl">👨‍💼</span>
               </div>
             </div>
           </div>
