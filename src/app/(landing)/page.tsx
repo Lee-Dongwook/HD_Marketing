@@ -916,22 +916,21 @@ export default function LandingPage() {
         </div>
 
         <div className="relative z-10 w-full max-w-5xl px-8 py-10 flex flex-col items-center justify-center space-y-16">
-          <div>
+          <div className="flex flex-row items-center justify-center gap-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 text-center tracking-widest">
               오늘도
             </h2>
-          </div>
-
-          <div
-            ref={line2Ref}
-            className="opacity-0"
-            style={{
-              letterSpacing: "0.2em",
-            }}
-          >
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-light text-gray-700 text-center tracking-wider">
-              버티셨다면,
-            </h2>
+            <div
+              ref={line2Ref}
+              className="opacity-0"
+              style={{
+                letterSpacing: "0.2em",
+              }}
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 text-center tracking-wider">
+                버티셨다면,
+              </h2>
+            </div>
           </div>
 
           <div
