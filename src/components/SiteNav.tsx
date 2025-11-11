@@ -129,7 +129,7 @@ export default function SiteNav() {
         </div>
         <div>
           <Link
-            href="/contact"
+            href="/inquiry"
             className="inline-block w-32 p-4 bg-blue-500 text-white text-xl font-medium rounded-md transition-colors duration-200 text-center"
           >
             문의하기
