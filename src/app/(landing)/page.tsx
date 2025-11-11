@@ -1059,6 +1059,20 @@ export default function LandingPage() {
             </div>
           </div>
 
+          {/* TODO: FIX */}
+          <div className="hidden">
+            <div className="flex items-center gap-4 justify-center">
+              <div className="flex-1 max-w-md">
+                <div>
+                  <h2 className="text-2xl font-semibold text-black">.</h2>
+                  <h2 className="text-2xl font-semibold text-black">.</h2>
+                  <h2 className="text-2xl font-semibold text-black">.</h2>
+                  <h2 className="text-2xl font-semibold text-black">🧐</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Final Answer - HD (Right) */}
           <div ref={answer1Ref} className="opacity-0">
             <div className="flex items-start gap-4 justify-end">
@@ -1212,101 +1226,6 @@ export default function LandingPage() {
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-800">
                 매출 성장의 원동력이 되어야 합니다.
               </h3>
-            </div>
-          </div>
-
-          {/* Value foundation */}
-          <div ref={valueRef} className="opacity-0 text-center py-8">
-            <p className="text-xl md:text-2xl font-light text-gray-600">
-              기반이 되는 가치
-            </p>
-          </div>
-
-          {/* 5T Timeline */}
-          <div className="relative py-12">
-            {/* Vertical line */}
-            <div className="absolute left-8 md:left-12 top-0 bottom-0 w-0.5 bg-gray-300"></div>
-
-            <div className="space-y-12">
-              {/* Timeline 1: Trend */}
-              <div
-                ref={timeline1Ref}
-                className="opacity-0 relative pl-20 md:pl-28"
-              >
-                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-blue-500 border-4 border-white shadow-lg"></div>
-                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
-                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                    Trend
-                  </h4>
-                  <p className="text-lg md:text-xl font-light text-gray-600">
-                    트렌드
-                  </p>
-                </div>
-              </div>
-
-              {/* Timeline 2: Tech */}
-              <div
-                ref={timeline2Ref}
-                className="opacity-0 relative pl-20 md:pl-28"
-              >
-                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-purple-500 border-4 border-white shadow-lg"></div>
-                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
-                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                    Tech
-                  </h4>
-                  <p className="text-lg md:text-xl font-light text-gray-600">
-                    기술
-                  </p>
-                </div>
-              </div>
-
-              {/* Timeline 3: Tactics */}
-              <div
-                ref={timeline3Ref}
-                className="opacity-0 relative pl-20 md:pl-28"
-              >
-                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-green-500 border-4 border-white shadow-lg"></div>
-                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
-                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                    Tactics
-                  </h4>
-                  <p className="text-lg md:text-xl font-light text-gray-600">
-                    전략
-                  </p>
-                </div>
-              </div>
-
-              {/* Timeline 4: Target */}
-              <div
-                ref={timeline4Ref}
-                className="opacity-0 relative pl-20 md:pl-28"
-              >
-                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-orange-500 border-4 border-white shadow-lg"></div>
-                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
-                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                    Target
-                  </h4>
-                  <p className="text-lg md:text-xl font-light text-gray-600">
-                    목표
-                  </p>
-                </div>
-              </div>
-
-              {/* Timeline 5: Talk */}
-              <div
-                ref={timeline5Ref}
-                className="opacity-0 relative pl-20 md:pl-28"
-              >
-                <div className="absolute left-6 md:left-9 top-2 w-6 h-6 rounded-full bg-pink-500 border-4 border-white shadow-lg"></div>
-                <div className="bg-white rounded-2xl p-6 shadow-md border border-gray-200">
-                  <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                    Talk
-                  </h4>
-                  <p className="text-lg md:text-xl font-light text-gray-600">
-                    소통
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
