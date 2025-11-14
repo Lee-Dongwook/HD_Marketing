@@ -4,6 +4,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useParams } from "next/navigation";
+import Accordion from "@/shared/ui/Accordion";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
@@ -36,9 +37,10 @@ export default function ProductDetailPage() {
             productData?.[0].product.map((pro: any, idx: number) => {
               return (
                 <div key={idx} className="flex flex-col gap-2">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                    {pro.title}
-                  </h2>
+                  <Accordion
+                    title={pro.title}
+                    content={pro.content ?? "내용 예시"}
+                  />
                 </div>
               );
             })}
