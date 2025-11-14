@@ -30,6 +30,19 @@ export default function ProductDetailPage() {
         <p className="text-lg md:text-xl font-light text-gray-600 leading-relaxed">
           {productData?.[0]?.content}
         </p>
+
+        <div className="flex flex-col gap-8 mt-12">
+          {productData?.[0]?.product &&
+            productData?.[0].product.map((pro: any, idx: number) => {
+              return (
+                <div key={idx} className="flex flex-col gap-2">
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                    {pro.title}
+                  </h2>
+                </div>
+              );
+            })}
+        </div>
       </div>
     </main>
   );
