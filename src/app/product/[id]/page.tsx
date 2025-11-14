@@ -37,7 +37,7 @@ export default function ProductDetailPage() {
   const product = productData?.[0];
 
   return (
-    <main className="relative w-full min-h-screen overflow-x-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100">
+    <main className="relative w-full min-h-screen overflow-x-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-200 rounded-full blur-3xl"></div>

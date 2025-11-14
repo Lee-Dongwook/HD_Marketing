@@ -25,7 +25,9 @@ export default function RootLayout({
       <body>
         <QueryProvider>
           <SiteNav />
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+            {children}
+          </main>
           <Footer />
         </QueryProvider>
       </body>

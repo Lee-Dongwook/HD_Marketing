@@ -28,7 +28,7 @@ export default function WorkPage() {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100">
+    <main className="relative w-full overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-[60vh] w-full flex items-center justify-center py-20">
         {/* Background pattern */}

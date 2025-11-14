@@ -41,12 +41,7 @@ export default function SiteNav() {
   if (isMobile || isTablet) {
     return (
       <>
-        <header
-          className="sticky top-0 left-0 backdrop-blur-md flex items-center justify-between w-full h-[82px] p-8 text-[12px] leading-[16.08px] font-sans transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)] z-50"
-          style={{
-            background: "rgba(35, 43, 64, 0.85)",
-          }}
-        >
+        <header className="sticky top-0 left-0 backdrop-blur-md bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 flex items-center justify-between w-full h-[82px] p-8 text-[12px] leading-[16.08px] font-sans transition-transform duration-500 [transition-timing-function:cubic-bezier(0,0.61,0.28,0.92)] z-50">
           <Link href="/" className="flex items-center">
             <img
               src="/images/HDLogo.png"
@@ -104,13 +99,7 @@ export default function SiteNav() {
 
   return (
     <>
-      {/* 상단 얇은 바 + 햄버거(좌) / 로그인+IG(우) */}
-      <header
-        className="sticky top-0 left-0 flex items-center justify-between w-full h-24 px-16 text-xl text-[#1c1e21] z-50"
-        style={{
-          background: "rgba(35, 43, 64, 0.85)",
-        }}
-      >
+      <header className="sticky top-0 left-0 flex items-center justify-between w-full h-24 px-16 text-xl text-[#1c1e21] z-10">
         <Link href="/" className="flex items-center">
           <img src="/images/HDLogo.png" alt="HD Logo" className="h-32 w-auto" />
         </Link>

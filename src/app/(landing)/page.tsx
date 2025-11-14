@@ -919,7 +919,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100">
+    <main className="relative w-full overflow-x-hidden">
       <section
         ref={section1Ref}
         className="relative min-h-screen w-full flex items-center justify-center"
@@ -1493,7 +1493,7 @@ export default function LandingPage() {
       {/* Section 7: CEO Introduction */}
       <section
         ref={section7Ref}
-        className="relative min-h-screen w-full flex items-center justify-center py-32 bg-gradient-to-b from-gray-50 to-white"
+        className="relative min-h-screen w-full flex items-center justify-center py-32 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"
       >
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl px-6 md:px-8">
@@ -1660,7 +1660,7 @@ export default function LandingPage() {
         className="relative min-h-screen w-full flex items-center justify-center py-20"
       >
         {/* Dynamic background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
             <div
@@ -1809,11 +1809,11 @@ export default function LandingPage() {
         ref={section9Ref}
         className="relative min-h-screen w-full flex items-center justify-center py-20"
       >
-        {/* Warm background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-50 via-yellow-50 to-white">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-orange-200 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-yellow-200 rounded-full blur-3xl"></div>
+        {/* Navy background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-purple-500/30 rounded-full blur-3xl"></div>
           </div>
         </div>
 

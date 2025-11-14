@@ -137,7 +137,7 @@ export default function CompanyPage() {
   }, []);
 
   return (
-    <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100">
+    <main className="relative w-full overflow-x-hidden">
       {/* Hero Section */}
       <section
         ref={heroRef}

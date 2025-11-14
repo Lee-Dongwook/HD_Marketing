@@ -15,6 +15,17 @@ const config: Config = {
         montserrat: ["var(--font-montserrat)", "sans-serif"],
         poppins: ["var(--font-poppins)", "sans-serif"],
       },
+      colors: {
+        navy: {
+          900: "#0A1929",
+          800: "#1a2332",
+          700: "#1e293b",
+        },
+        accent: {
+          gold: "#fbbf24",
+          yellow: "#f59e0b",
+        },
+      },
     },
   },
 };
