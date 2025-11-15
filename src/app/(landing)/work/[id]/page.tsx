@@ -95,16 +95,34 @@ export default function WorkDetailPage() {
         </section>
       )}
 
-      {work?.analysis && (
-        <section className="relative w-full py-10 md:py-20">
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8">
-            <MindMap
-              title={work.analysis.title}
-              data={work.analysis.data || []}
-            />
-          </div>
-        </section>
-      )}
+      {work?.analysis &&
+        work.analysis.data &&
+        Array.isArray(work.analysis.data) &&
+        work.analysis.data.length > 0 && (
+          <section className="relative w-full py-10 md:py-20">
+            <h4 className="text-2xl font-bold text-gray-900 mb-4 text-center tracking-tight">
+              {work?.analysis?.title}
+            </h4>
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 mt-8">
+              <div className="flex flex-row gap-6">
+                {work.analysis.data.map((item: any, idx: number) => {
+                  const branchNodes = Array.isArray(item.content)
+                    ? item.content.map((contentItem: string) => ({
+                        title: contentItem,
+                        content: [],
+                      }))
+                    : [];
+
+                  return (
+                    <div key={idx} className="flex-1 min-w-0">
+                      <MindMap title={item.title} data={branchNodes} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
 
       {/* Bottom Spacing */}
       <div className="h-20 md:h-32"></div>
