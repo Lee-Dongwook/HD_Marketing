@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
@@ -9,46 +10,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface WorkItem {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  imageGradient: string;
-  slug: string;
-}
-
-const workItems: WorkItem[] = [
-  {
-    id: 1,
-    title: "브랜드 전략 컨설팅",
-    description:
-      "데이터 기반의 체계적인 브랜드 전략 수립과 시장 분석을 통해 성공적인 브랜드를 구축합니다.",
-    category: "Strategy",
-    imageGradient: "from-blue-500 to-purple-600",
-    slug: "brand-strategy",
-  },
-  {
-    id: 2,
-    title: "디지털 마케팅",
-    description:
-      "SNS, 검색광고, 콘텐츠 마케팅 등 다양한 디지털 채널을 활용한 통합 마케팅 솔루션을 제공합니다.",
-    category: "Marketing",
-    imageGradient: "from-purple-500 to-pink-600",
-    slug: "digital-marketing",
-  },
-  {
-    id: 3,
-    title: "크리에이티브 제작",
-    description:
-      "브랜드의 가치를 효과적으로 전달하는 차별화된 크리에이티브 콘텐츠를 제작합니다.",
-    category: "Creative",
-    imageGradient: "from-pink-500 to-orange-600",
-    slug: "creative-production",
-  },
-];
-
 export default function WorkPage() {
+  const router = useRouter();
   const { data: WorkData, isLoading } = useQuery<any[]>({
     queryKey: ["work"],
     queryFn: async () => {
@@ -104,7 +67,7 @@ export default function WorkPage() {
             {WorkData?.map((work, index) => (
               <div
                 key={work.id}
-                // onClick={() => router.push(`/work/${work.id}`)}
+                onClick={() => router.push(`/work/${work.id}`)}
               >
                 <a className="group block bg-white/50 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-lg border border-gray-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
                   <div className="space-y-4">
