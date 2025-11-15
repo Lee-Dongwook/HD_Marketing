@@ -10,15 +10,18 @@ interface MindMapNode {
 interface MindMapProps {
   title: string;
   data: MindMapNode[];
+  onNodeClick?: (node: MindMapNode) => void;
 }
 
 // 2단계 노드 (중간 관리자)
 function SecondLevelNode({
   node,
   index,
+  onNodeClick,
 }: {
   node: MindMapNode;
   index: number;
+  onNodeClick?: (node: MindMapNode) => void;
 }) {
   const colors = [
     {
@@ -40,11 +43,16 @@ function SecondLevelNode({
 
   const colorScheme = colors[index % colors.length];
 
+  const handleClick = () => {
+    onNodeClick?.(node);
+  };
+
   return (
     <div className="flex flex-col items-center relative">
       {/* 2단계 노드 박스 */}
-      <div
-        className={`${colorScheme.bg} ${colorScheme.text} rounded-lg px-6 py-4 shadow-md hover:shadow-lg transition-all duration-300 min-w-[200px] max-w-[250px] relative z-10`}
+      <button
+        onClick={handleClick}
+        className={`${colorScheme.bg} ${colorScheme.text} rounded-lg px-6 py-4 shadow-md hover:shadow-lg transition-all duration-300 min-w-[200px] max-w-[250px] relative z-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400`}
       >
         <div className="flex items-center gap-3">
           {/* 아이콘 */}
@@ -64,7 +72,7 @@ function SecondLevelNode({
             <h3 className="font-bold text-base leading-tight">{node.title}</h3>
           </div>
         </div>
-      </div>
+      </button>
 
       {/* 연결선 - 아래로 */}
       {node.content.length > 0 && (
@@ -113,7 +121,7 @@ function SecondLevelNode({
   );
 }
 
-export default function MindMap({ title, data }: MindMapProps) {
+export default function MindMap({ title, data, onNodeClick }: MindMapProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   if (!data || data.length === 0) return null;
@@ -165,7 +173,12 @@ export default function MindMap({ title, data }: MindMapProps) {
             {/* 2단계 노드들 - 가로 배치 (COO, CFO, CTO 스타일) */}
             <div className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-10">
               {data.map((node, index) => (
-                <SecondLevelNode key={index} node={node} index={index} />
+                <SecondLevelNode
+                  key={index}
+                  node={node}
+                  index={index}
+                  onNodeClick={onNodeClick}
+                />
               ))}
             </div>
           </div>
