@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -47,48 +49,25 @@ const workItems: WorkItem[] = [
 ];
 
 export default function WorkPage() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const { data: WorkData, isLoading } = useQuery<any[]>({
+    queryKey: ["work"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("process").select("*");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero animation
-      gsap.fromTo(
-        titleRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }
-      );
+      if (error) throw error;
+      console.log("WorkData from Supabase:", data);
+      return data;
+    },
+  });
 
-      // Cards animation
-      gsap.fromTo(
-        ".work-card",
-        { opacity: 0, y: 80 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-    });
+  console.log("Rendering with WorkData:", WorkData);
 
-    return () => ctx.revert();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100">
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative min-h-[60vh] w-full flex items-center justify-center py-20"
-      >
+      <section className="relative min-h-[60vh] w-full flex items-center justify-center py-20">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-200 rounded-full blur-3xl"></div>
@@ -97,7 +76,7 @@ export default function WorkPage() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-6xl px-8 text-center space-y-6">
-          <div ref={titleRef} className="opacity-0 flex flex-col">
+          <div className="flex flex-col">
             <div className="flex flex-col gap-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
                 종류/단계별 진행 프로세스
@@ -120,54 +99,43 @@ export default function WorkPage() {
 
       {/* Work Cards Section */}
       <section className="relative w-full py-10">
-        <div
-          ref={cardsRef}
-          className="relative z-10 w-full max-w-7xl mx-auto px-8"
-        >
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
           <div className="grid grid-cols-1 gap-8">
-            {workItems.map((item) => (
-              <Link
-                key={item.id}
-                href={`/work/${item.slug}`}
-                className="work-card group opacity-0"
+            {WorkData?.map((work, index) => (
+              <div
+                key={work.id}
+                // onClick={() => router.push(`/work/${work.id}`)}
               >
-                <div className="relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-row">
-                  <div className="p-8 space-y-4">
-                    <div className="inline-block">
-                      <span className="px-4 py-1.5 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-600 text-sm font-medium rounded-full">
-                        {item.category}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-base text-gray-600 leading-relaxed">
-                      {item.description}
+                <a className="group block bg-white/50 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-lg border border-gray-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                  <div className="space-y-4">
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                      {work.title}
+                    </h2>
+                    <p className="text-lg md:text-xl font-light text-gray-600 leading-relaxed">
+                      {work.content}
                     </p>
-
-                    <div className="pt-4 flex items-center text-gray-400 group-hover:text-blue-600 transition-colors duration-300">
-                      <span className="text-sm font-medium mr-2">
-                        자세히 보기
-                      </span>
-                      <svg
-                        className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </div>
                   </div>
-                </div>
-              </Link>
+
+                  <div className="mt-6 flex items-center text-blue-500 font-medium">
+                    <span className="group-hover:translate-x-2 transition-transform duration-300">
+                      자세히 보기
+                    </span>
+                    <svg
+                      className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </a>
+              </div>
             ))}
           </div>
         </div>
