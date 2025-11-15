@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useParams } from "next/navigation";
 import Accordion from "@/shared/ui/Accordion";
+import MindMap from "@/components/MindMap";
 
 export default function WorkDetailPage() {
   const { id } = useParams();
@@ -90,6 +91,17 @@ export default function WorkDetailPage() {
                 );
               })}
             </div>
+          </div>
+        </section>
+      )}
+
+      {work?.analysis && (
+        <section className="relative w-full py-10 md:py-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8">
+            <MindMap
+              title={work.analysis.title}
+              data={work.analysis.data || []}
+            />
           </div>
         </section>
       )}
