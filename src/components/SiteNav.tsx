@@ -106,9 +106,9 @@ export default function SiteNav() {
     <>
       {/* 상단 얇은 바 + 햄버거(좌) / 로그인+IG(우) */}
       <header
-        className="sticky top-0 left-0 flex items-center justify-between w-full h-24 px-16 text-xl text-[#1c1e21] z-50"
+        className="sticky top-0 left-0 flex items-center justify-between w-full h-24 px-16 text-xl text-[#1c1e21] z-50 bg-transparent"
         style={{
-          background: "rgba(35, 43, 64, 0.85)",
+          backgroundColor: "#171a52",
         }}
       >
         <Link href="/" className="flex items-center">

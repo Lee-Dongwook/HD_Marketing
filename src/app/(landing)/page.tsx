@@ -920,16 +920,11 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100">
+    <main className="relative w-full overflow-x-hidden">
       <section
         ref={section1Ref}
         className="relative min-h-screen w-full flex items-center justify-center"
       >
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200 rounded-full blur-3xl"></div>
-        </div>
-
         <div className="relative z-10 w-full max-w-5xl px-8 py-10 flex flex-col items-center justify-center space-y-16">
           <div className="flex flex-row items-center justify-center gap-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 text-center tracking-widest">
@@ -970,12 +965,6 @@ export default function LandingPage() {
         ref={section2Ref}
         className="relative min-h-screen w-full flex items-center justify-center"
       >
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
-        </div>
-
         {/* Additional content section */}
         <div className="relative z-10 w-full max-w-4xl px-8 space-y-8">
           {/* Line 4 */}
@@ -1038,12 +1027,6 @@ export default function LandingPage() {
         ref={section3Ref}
         className="relative min-h-screen w-full flex items-center justify-center py-20"
       >
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-green-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-yellow-200 rounded-full blur-3xl"></div>
-        </div>
-
         {/* Chat content section */}
         <div className="relative z-10 w-full max-w-4xl px-8 space-y-8">
           {/* Question - 사장님들 (Left) */}
@@ -1127,11 +1110,6 @@ export default function LandingPage() {
         ref={section4Ref}
         className="relative min-h-screen w-full flex items-center justify-center py-20"
       >
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gray-200 rounded-full blur-3xl"></div>
-        </div>
-
         {/* Content */}
         <div className="relative z-10 w-full max-w-6xl px-8 space-y-16">
           {/* WheelPicker Style Reasons */}
@@ -1171,12 +1149,6 @@ export default function LandingPage() {
         ref={section5Ref}
         className="relative min-h-screen w-full flex items-center justify-center py-20"
       >
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gray-200 rounded-full blur-3xl"></div>
-        </div>
-
         {/* Content */}
         <div className="relative z-10 w-full max-w-5xl px-8 space-y-16">
           {/* Opening question */}
@@ -1237,12 +1209,6 @@ export default function LandingPage() {
         ref={section6Ref}
         className="relative min-h-screen w-full flex items-center justify-center py-20"
       >
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-yellow-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-200 rounded-full blur-3xl"></div>
-        </div>
-
         {/* Floating animation styles */}
         <style jsx>{`
           @keyframes float {
