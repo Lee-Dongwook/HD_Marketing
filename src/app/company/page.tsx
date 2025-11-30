@@ -138,40 +138,151 @@ export default function CompanyPage() {
   }, []);
 
   return (
-    <main className="relative w-full overflow-x-hidden bg-gradient-to-b from-white via-gray-50 to-gray-100">
+    <main className="relative w-full overflow-x-hidden bg-black">
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-screen w-full flex items-center justify-center"
+        className="relative min-h-screen w-full flex flex-col"
       >
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-200 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 w-full max-w-5xl px-8 py-20 flex flex-col items-center justify-center space-y-12">
-          {/* Opening Quote */}
-          <div ref={openingQuoteRef} className="opacity-0 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-700 leading-relaxed">
-              "잘되는 가게보다 중요한 건,
-            </h2>
-          </div>
-
-          {/* Sub Quote */}
-          <div ref={openingSubQuoteRef} className="opacity-0 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-800 leading-relaxed">
-              사람의 이야기를 이해하는 일이었습니다."
-            </h2>
-          </div>
-
-          {/* Main Title */}
-          <div ref={mainTitleRef} className="opacity-0 text-center pt-12">
-            <div className="inline-block bg-white/70 backdrop-blur-sm rounded-3xl px-12 py-8 shadow-lg border border-gray-200">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-                High 그리고, dynamics의 시작
-              </h1>
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center mt-24">
+            <div>
+              <h4 className="text-[#7CB342] text-md block mb-4 tracking-widest ml-1">
+                ABOUT US
+              </h4>
+              <h2 className="text-4xl md:text-6xl text-white mb-2">
+                성장을 만드는
+              </h2>
+              <h2 className="text-4xl md:text-6xl text-[#7CB342] mb-8">
+                마케팅 파트너
+              </h2>
+              <p className="text-white/60 text-lg mb-8 leading-relaxed">
+                "High & Dynamics는 브랜드의 잠재력을 발견하고 극대화하는 마케팅
+                에이전시입니다. 데이터 기반의 전략적 사고와 창의적인 실행력으로
+                고객사의 비즈니스 목표 달성을 돕습니다."
+              </p>
+              <div className="flex flex-col space-y-4 mb-12">
+                <div className="flex items-center gap-4 group opacity-100 transform-none">
+                  <div className="w-2 h-2 bg-[#7CB342] rounded-full group-hover:scale-150 transition-transform" />
+                  <span className="text-white/80 group-hover:text-white transition-colors">
+                    데이터 기반 의사결정으로 ROI 극대화
+                  </span>
+                </div>
+                <div className="flex items-center gap-4 group opacity-100 transform-none">
+                  <div className="w-2 h-2 bg-[#7CB342] rounded-full group-hover:scale-150 transition-transform" />
+                  <span className="text-white/80 group-hover:text-white transition-colors">
+                    통합 마케팅 솔루션으로 시너지 창출
+                  </span>
+                </div>
+                <div className="flex items-center gap-4 group opacity-100 transform-none">
+                  <div className="w-2 h-2 bg-[#7CB342] rounded-full group-hover:scale-150 transition-transform" />
+                  <span className="text-white/80 group-hover:text-white transition-colors">
+                    각 분야 전문가들의 협업으로 최상의 결과 도출
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="relative opacity-100 transform-none">
+                <div className="relative rounded-3xl overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                    alt="TEAM"
+                    className="w-full h-[500px] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
+                </div>
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <div className="bg-graident-to-br from-[#1A3A5C] to-[#0D1F33] p-6 rounded-2xl border border-white/5 relative overflow-hidden group cursor-pointer opacity-100 transform-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#7CB342]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-target text-[#7cb342] mb-3"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cy="12" r="6"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    <div className="text-3xl text-white mb-1">200+</div>
+                    <div className="text-white/50 text-sm">성공 프로젝트</div>
+                  </div>
+                  <div className="bg-graident-to-br from-[#1A3A5C] to-[#0D1F33] p-6 rounded-2xl border border-white/5 relative overflow-hidden group cursor-pointer opacity-100 transform-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#7CB342]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-target text-[#7cb342] mb-3"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cy="12" r="6"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    <div className="text-3xl text-white mb-1">150+</div>
+                    <div className="text-white/50 text-sm">파트너 기업</div>
+                  </div>
+                  <div className="bg-graident-to-br from-[#1A3A5C] to-[#0D1F33] p-6 rounded-2xl border border-white/5 relative overflow-hidden group cursor-pointer opacity-100 transform-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#7CB342]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-target text-[#7cb342] mb-3"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cy="12" r="6"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    <div className="text-3xl text-white mb-1">98%</div>
+                    <div className="text-white/50 text-sm">고객 만족도</div>
+                  </div>
+                  <div className="bg-graident-to-br from-[#1A3A5C] to-[#0D1F33] p-6 rounded-2xl border border-white/5 relative overflow-hidden group cursor-pointer opacity-100 transform-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#7CB342]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-target text-[#7cb342] mb-3"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <circle cx="12" cy="12" r="6"></circle>
+                      <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    <div className="text-3xl text-white mb-1">10년+</div>
+                    <div className="text-white/50 text-sm">평균 경력</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
