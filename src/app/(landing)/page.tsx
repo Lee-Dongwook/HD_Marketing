@@ -920,43 +920,31 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <main className="relative w-full overflow-x-hidden">
-      <section
-        ref={section1Ref}
-        className="relative min-h-screen w-full flex items-center justify-center"
-      >
-        <div className="relative z-10 w-full max-w-5xl px-8 py-10 flex flex-col items-center justify-center space-y-16">
-          <div className="flex flex-row items-center justify-center gap-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 text-center tracking-widest">
+    <main className="relative w-full overflow-x-hidden bg-graident-to-b from-black/70 via-black/60 to-black">
+      <section className="relative min-h-screen w-full flex items-center justify-center">
+        <div className="absolute inset-0 transform-none">
+          <img
+            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1920&q=80"
+            alt="Hero Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
+        </div>
+        <div className="relative z-10 w-full text-center px-6 mx-auto opacity-100 transform-none">
+          <div className="flex flex-col items-center justify-center gap-4">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium text-white mb-4 leading-tight tracking-tight">
               오늘도
             </h2>
-            <div
-              ref={line2Ref}
-              className="opacity-0"
-              style={{
-                letterSpacing: "0.2em",
-              }}
-            >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 text-center tracking-wider">
-                버티셨다면,
-              </h2>
-            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium text-white mb-4 tracking-tight leading-tight">
+              버티셨다면,
+            </h2>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium text-white tracking-tight leading-tight">
+              내일은 <span className="text-[#7CB342]">우리가 함께</span>합니다.
+            </h2>
           </div>
-
-          <div
-            ref={line3Ref}
-            className="opacity-0"
-            style={{
-              letterSpacing: "0.2em",
-            }}
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal text-gray-900 text-center tracking-wider min-h-[1.2em]">
-              {typedText}
-              {typedText.length > 0 && typedText.length < 12 && (
-                <span className="animate-pulse">|</span>
-              )}
-            </h1>
-          </div>
+        </div>
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-100">
+          <div className="text-white/30 text-xs tracking-[0.3em]">SCROLL</div>
         </div>
       </section>
 
@@ -965,7 +953,6 @@ export default function LandingPage() {
         ref={section2Ref}
         className="relative min-h-screen w-full flex items-center justify-center"
       >
-        {/* Additional content section */}
         <div className="relative z-10 w-full max-w-4xl px-8 space-y-8">
           {/* Line 4 */}
           <div ref={line4Ref} className="opacity-0">
