@@ -1535,6 +1535,58 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/*Section : High and Dynamics*/}
+      <section className="container mx-auto px-6 lg:px-12 flex flex-col gap-8">
+        <div className="text-center mb-20 opacity-100 transform-none">
+          <h2 className="text-5xl md:text-7xl mb-6">
+            <span className="text-white">High </span>
+            <span className="text-white/40">그리고, </span>
+            <span className="text-[#7CB342]">Dynamics</span>
+            <span className="text-white">의 시작</span>
+          </h2>
+        </div>
+
+        <div className="bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] rounded-3xl p-12 md:p-16 border border-white/10">
+          <p className="text-2xl md:text-3xl text-white leading-relaxed mb-8">
+            단순히 빠르고 크게 성장하는 것만이 목표가 아닙니다.
+          </p>
+          <p className="text-xl md:text-2xl text-white leading-relaxed mb-8">
+            성장하는 과정에 있어 서로의 이야기를 듣고, 진심으로 공감하며, 정확한
+            해결방안을 찾고, 신속히 적용시키는 것에 대해 진짜 의미가 있습니다.
+          </p>
+        </div>
+
+        <div className="bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] rounded-3xl p-12 md:p-16 border border-white/10">
+          <p className="text-xl md:text-2xl text-white leading-relaxed mb-8">
+            이렇듯 소비자의 대한 존중과 가치를 바라며 함께 감에 있어 공존된
+            성장을 추구하고 지금 이 순간도 여전히 우리는 성장하고 있습니다.
+          </p>
+        </div>
+
+        <div className="bg-gradient-to-br from-[#1A3A5C]/40 to-[#0A0A0A] backdrop-blur-sm rounded-3xl p-12 md:p-20 border border-[#7CB342]/30 text-center">
+          <p className="text-2xl md:text-4xl text-white leading-relaxed mb-8">
+            이어서 우리의 문제가 나의 삶, 나의 가족에게
+            <br />
+            <span className="text-[#7CB342]">행복을 가져다주기 위해</span>
+            <br />
+            HD컴퍼니는 존재합니다.
+          </p>
+          <div className="h-px bg-gradient-to-r from-transparent via-[#7CB342]/50 to-transparent my-12" />
+          <div className="space-y-6 text-lg md:text-xl text-white leading-relaxed">
+            <p>단순한 광고상품과 혜택을 제공하는 것이 아닌,</p>
+            <p className="text-[#7CB342]">
+              힘들 때 한번이라도 이겨낼 수 있는 힘을 부여하고,
+            </p>
+            <p>그럼에도 웃을 수 있는 행복을 판매하는 것이며,</p>
+            <p className="text-white text-2xl md:text-3xl mt-8">
+              그동안 여러분의 힘들고 우울했던 날들은
+              <br />
+              <span className="text-[#7CB342]">HD컴퍼니가 구매합니다.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Section 8: Final CTA */}
       <section
         ref={section8Ref}
