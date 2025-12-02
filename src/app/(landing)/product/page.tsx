@@ -284,8 +284,8 @@ export default function ProductPage() {
             </button>
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-32 bg-white">
-            <div className="grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          <div className="relative z-10 w-full mx-auto px-6 md:px-8 py-20 md:py-32 bg-white/10 rounded-3xl">
+            <div className="flex flex-wrap gap-8">
               {!ProductData || ProductData.length === 0 ? (
                 <div className="col-span-2 text-center py-20">
                   <p className="text-xl text-gray-600">
@@ -293,42 +293,71 @@ export default function ProductPage() {
                   </p>
                 </div>
               ) : (
-                ProductData.map((product, index) => (
-                  <div
-                    key={product.id}
-                    onClick={() => router.push(`/product/${product.id}`)}
-                  >
-                    <a className="group block bg-white/50 backdrop-blur-sm rounded-3xl p-8 md:p-10 shadow-lg border border-gray-200 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
-                      <div className="space-y-4">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                          {product.title}
-                        </h2>
-                        <p className="text-lg md:text-xl font-light text-gray-600 leading-relaxed">
-                          {product.content}
-                        </p>
-                      </div>
+                ProductData.map((product, index) => {
+                  const { title, sub_title, content, metrics } = product;
 
-                      <div className="mt-6 flex items-center text-blue-500 font-medium">
-                        <span className="group-hover:translate-x-2 transition-transform duration-300">
-                          자세히 보기
-                        </span>
-                        <svg
-                          className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </div>
-                    </a>
-                  </div>
-                ))
+                  return (
+                    <div
+                      key={product.id || index}
+                      className="min-w-96 min-h-96 bg-transparent rounded-3xl border border-white/20 backdrop-blur-xl"
+                      onClick={() => router.push(`/product/${product.id}`)}
+                    >
+                      <a className="group block rounded-3xl p-8 md:p-10 hover:scale-[1.02] transition-all duration-300">
+                        <div className="space-y-4">
+                          <h2 className="text-2xl md:text-3xl font-bold text-white transition-colors duration-300">
+                            {title}
+                          </h2>
+                          {sub_title && (
+                            <p className="text-lg md:text-xl font-light text-gray-600 leading-relaxed">
+                              {sub_title}
+                            </p>
+                          )}
+                          {content && (
+                            <p className="text-lg md:text-xl font-light text-gray-600 leading-relaxed">
+                              {content}
+                            </p>
+                          )}
+                          {metrics && (
+                            <div className="flex flex-row items-center gap-12">
+                              {metrics.map((metric, index) => (
+                                <div
+                                  key={index}
+                                  className="border border-white/20 rounded-xl p-2 flex flex-col items-center justify-center min-w-36 min-h-24"
+                                >
+                                  <p className="text-xl text-white/50">
+                                    {metric.name}
+                                  </p>
+                                  <p className="text-xl text-white/50">
+                                    {metric.number}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        <button className="mt-12 flex flex-row items-center justify-center gap-2 text-white font-medium border border-white/20 rounded-xl p-2 w-full h-16">
+                          <span className="group-hover:translate-x-2 transition-transform duration-300">
+                            자세히 보기
+                          </span>
+                          <svg
+                            className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </button>
+                      </a>
+                    </div>
+                  );
+                })
               )}
             </div>
           </div>
