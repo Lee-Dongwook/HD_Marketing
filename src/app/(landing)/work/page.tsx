@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { gsap } from "gsap";
@@ -191,7 +190,12 @@ export default function WorkPage() {
                               {/* <div /> */}
                               <div className="relative flex items-center justify-between gap-4 lg:gap-6">
                                 <div className="flex items-center gap-4 lg:gap-6 flex-1">
-                                  <div></div>
+                                  <div className="relative w-16 h-16 lg:w-20 lg:h-20 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all duration-500 bg-graident-to-br from-white/20 to-white/10 group-hover/card:from-white/25 group-hover/card:to-white/15">
+                                    <span className="relative text-2xl lg:text-3xl transition-all duration-300 text-white/90">
+                                      {idx + 1}
+                                    </span>
+                                    <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-white/40 transition-opacity opacity-0" />
+                                  </div>
                                   <div className="flex-1">
                                     <h4 className="text-xl lg:text-2xl mb-2 transition-all duration-300 text-white/90 group-hover/card:text-white">
                                       {title}
