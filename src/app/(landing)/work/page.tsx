@@ -12,6 +12,13 @@ import { SquareChevronDown, SquareChevronUp } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WorkPage() {
+    const imageList = [
+                "/images/SelfWork.png",
+                "/images/OnlineCommerce.png",
+                "/images/Influencer.png",
+    ];
+  
+  const [selectedWork, setSelectedWork] = useState<any | null>(null);
   const { data: WorkData, isLoading } = useQuery<any[]>({
     queryKey: ["work"],
     queryFn: async () => {
@@ -19,18 +26,16 @@ export default function WorkPage() {
 
       if (error) throw error;
       console.log("WorkData from Supabase:", data);
+      setSelectedWork({ ...data[0], image: imageList[0] });
       return data;
     },
   });
-
-  const [selectedWork, setSelectedWork] = useState<any | null>(null);
+  
   const [expandedProcessIndex, setExpandedProcessIndex] = useState<
     number | null
   >(null);
 
   if (isLoading) return <div>Loading...</div>;
-
-  console.log(selectedWork);
 
   return (
     <main className="relative min-h-screen overflow-hidden py-20 lg:py-32">

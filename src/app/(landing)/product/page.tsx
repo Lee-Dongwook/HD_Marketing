@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 
@@ -18,7 +17,7 @@ interface ProductInfo {
 }
 
 export default function ProductPage() {
-  const router = useRouter();
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const { data: ProductData, isLoading } = useQuery<ProductInfo[]>({
     queryKey: ["product"],
     queryFn: async () => {
@@ -26,6 +25,7 @@ export default function ProductPage() {
 
       if (error) throw error;
       console.log("ProductData from Supabase:", data);
+      setSelectedProduct(data[0]);
       return data;
     },
   });
@@ -180,6 +180,9 @@ export default function ProductPage() {
                     <div
                       className="flex flex-col w-[500px] h-28 opacity-100 transform-none"
                       key={index}
+                      onClick={() => {
+                        setSelectedProduct(product);
+                      }}
                     >
                       <div className="flex flex-col w-[450px] h-28 rounded-3xl overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20  hover:border-white/40 transition-all duration-500 group-hover:shadow-[0_0_80px_rgba(124,179,66,0.3)]">
                         <div className="h-full flex flex-col items-center justify-center">
@@ -206,16 +209,18 @@ export default function ProductPage() {
                 }
               )}
             </div>
-            <div className="w-full p-4 min-h-96 flex items-center justify-center">
-              <Image
-                src="/images/NaverLogo.png"
-                alt="Product Logo"
-                width={300}
-                height={300}
-                priority
-                className="bg-transparent w-1/2 h-1/2 object-contain"
-              />
-            </div>
+            {selectedProduct && (
+              <div className="w-full p-4 min-h-96 flex items-center justify-center">
+                <Image
+                  src="/images/NaverLogo.png"
+                  alt="Product Logo"
+                  width={300}
+                  height={300}
+                  priority
+                  className="bg-transparent w-1/2 h-1/2 object-contain"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
