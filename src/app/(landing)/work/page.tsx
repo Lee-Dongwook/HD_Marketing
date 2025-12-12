@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import clsx from "clsx";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
@@ -28,6 +29,8 @@ export default function WorkPage() {
   >(null);
 
   if (isLoading) return <div>Loading...</div>;
+
+  console.log(selectedWork);
 
   return (
     <main className="relative min-h-screen overflow-hidden py-20 lg:py-32">
@@ -139,6 +142,12 @@ export default function WorkPage() {
                 </svg>,
               ];
 
+                const colorList = [
+                    "from-[#FF6F0F] via-[#FF8C3A] to-[#FFA05C]",
+                    "from-[#7CB342] via-[#9DD158] to-[#B8E986]",
+                    "from-[#001A4D] via-[#003D7A] to-[#0066CC]"
+                ];
+
               const imageList = [
                 "/images/SelfWork.png",
                 "/images/OnlineCommerce.png",
@@ -152,7 +161,7 @@ export default function WorkPage() {
                     setSelectedWork({ ...work, image: imageList[workIndex] });
                   }}
                 >
-                  <button className="relative w-full h-full p-8 rounded-3xl border backdrop-blur-xl transition-all duration-500 oveflow-hidden bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20">
+                  <button className={clsx("relative w-full h-full p-8 rounded-3xl border backdrop-blur-xl transition-all duration-500 oveflow-hidden bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20", isSelected && `bg-gradient-to-br ${colorList[workIndex]} border border-white/20  hover:border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.3)]`)}>
                     {isSelected && (
                       <div className="absolute top-4 right-4 w-24 flex items-center justify-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 opacity-100 transform-none">
                         <div className="flex flex-row items-center gap-1.5">
@@ -185,6 +194,16 @@ export default function WorkPage() {
                       <p className="text-sm text-white/50 mb-4">
                         {work.sub_title}
                       </p>
+                      {isSelected && (
+                        <div className="flex flex-row gap-3 items-center justify-center">
+                          {work.metrics.map((metric: any, idx: number) => (
+                            <div key={idx} className="bg-white/10 backdrop-blur-md flex flex-col items-center gap-2 opacity-100 transform-none p-2">
+                              <span className="text-lg text-white">{metric.number}</span>
+                              <span className="text-sm text-white/80">{metric.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </button>
                 </div>
@@ -217,15 +236,12 @@ export default function WorkPage() {
                         {selectedWork?.description}
                       </p>
                       <div className="flex flex-wrap gap-3">
-                        <div className="px-5 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center gap-2 opacity-100 transform-none">
-                          A
-                        </div>
-                        <div className="px-5 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center gap-2 opacity-100 transform-none">
-                          B
-                        </div>
-                        <div className="px-5 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center gap-2 opacity-100 transform-none">
-                          C
-                        </div>
+                        {selectedWork?.metrics.map((metric: any, idx: number) => (
+                          <div key={idx} className="px-5 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center gap-2 opacity-100 transform-none">
+                            <span className="text-lg text-white">{metric.number}</span>
+                            <span className="text-sm text-white/80">{metric.name}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
