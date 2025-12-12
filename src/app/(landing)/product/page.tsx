@@ -17,6 +17,14 @@ interface ProductInfo {
 }
 
 export default function ProductPage() {
+  const imageList = [
+    "/images/NaverLogo.png",
+    "/images/InstaLogo.png",
+    "/images/Influencer.png",
+    "/images/CarrotLogo.png",
+    "/images/MCNLogo.png",
+  ];
+
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const { data: ProductData, isLoading } = useQuery<ProductInfo[]>({
     queryKey: ["product"],
@@ -25,7 +33,7 @@ export default function ProductPage() {
 
       if (error) throw error;
       console.log("ProductData from Supabase:", data);
-      setSelectedProduct(data[0]);
+      setSelectedProduct({ ...data[0], image: imageList[0] });
       return data;
     },
   });
@@ -33,6 +41,8 @@ export default function ProductPage() {
   if (isLoading) return <div>Loading...</div>;
 
   console.log("Rendering with ProductData:", ProductData);
+
+  console.log("selectedProduct", selectedProduct);
 
   return (
     <main className="relative w-full min-h-screen overflow-x-hidden py-20 lg:py-32">
@@ -176,23 +186,31 @@ export default function ProductPage() {
                     </svg>,
                   ];
 
+                  const imageList = [
+                    "/images/NaverLogo.png",
+                    "/images/InstaLogo.png",
+                    "/images/Influencer.png",
+                    "/images/CarrotLogo.png",
+                    "/images/MCNLogo.png",
+                  ];
+
                   return (
                     <div
                       className="flex flex-col w-[500px] h-28 opacity-100 transform-none"
                       key={index}
                       onClick={() => {
-                        setSelectedProduct(product);
+                        setSelectedProduct({
+                          ...product,
+                          image: imageList[index],
+                        });
                       }}
                     >
                       <div className="flex flex-col w-[450px] h-28 rounded-3xl overflow-hidden bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20  hover:border-white/40 transition-all duration-500 group-hover:shadow-[0_0_80px_rgba(124,179,66,0.3)]">
                         <div className="h-full flex flex-col items-center justify-center">
                           <div className="flex flex-row items-center w-full p-4 gap-4">
-                            <div
-                              className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${colorList[index]} flex items-center justify-center shadow-2xl`}
-                            >
-                              {svgList[index]}
+                            <div>
+                              <Image src={imageList[index]} alt="Product Logo" width={60} height={60} priority className="object-cover aspect-square" />
                             </div>
-
                             <div className="flex flex-col gap-2">
                               <h3 className="text-xl lg:text-3xl text-white">
                                 {product.title}
@@ -210,15 +228,74 @@ export default function ProductPage() {
               )}
             </div>
             {selectedProduct && (
-              <div className="w-full p-4 min-h-96 flex items-center justify-center">
-                <Image
-                  src="/images/NaverLogo.png"
-                  alt="Product Logo"
-                  width={300}
-                  height={300}
-                  priority
-                  className="bg-transparent w-1/2 h-1/2 object-contain"
-                />
+              <div className="w-full max-w-[520px] h-[650px] overflow-y-auto flex flex-col border border-white/20 rounded-3xl backdrop-blur-xl bg-gradient-to-br from-white/5 to-transparent">
+                {/* Header Section */}
+                <div className="flex items-center gap-4 p-5 border-b border-white/10">
+                  <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center overflow-hidden shrink-0">
+                    <Image
+                      src={selectedProduct.image}
+                      alt="Product Logo"
+                      width={48}
+                      height={48}
+                      priority
+                      className="object-contain mix-blend-luminosity brightness-[1.5] aspect-square"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h4 className="text-xl font-bold text-white">
+                      {selectedProduct.title}
+                    </h4>
+                    <p className="text-sm text-white/60 leading-snug line-clamp-2">
+                      {selectedProduct.content}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="flex-1 p-5 overflow-y-auto">
+                  <div className="grid gap-3">
+                    {selectedProduct.product?.map(
+                      (product: any, index: number) => (
+                        <div
+                          key={index}
+                          className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors"
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#7CB342] to-[#1EC800] flex items-center justify-center shrink-0 mt-0.5">
+                              <span className="text-xs font-bold text-white">
+                                {index + 1}
+                              </span>
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                              <h5 className="text-base font-semibold text-white">
+                                {product.title}
+                              </h5>
+                              {Array.isArray(product.content) ? (
+                                <ul className="space-y-1">
+                                  {product.content.map(
+                                    (item: string, i: number) => (
+                                      <li
+                                        key={i}
+                                        className="text-sm text-white/60 leading-relaxed flex items-start gap-2"
+                                      >
+                                        <span className="text-[#7CB342] mt-1">•</span>
+                                        <span>{item}</span>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              ) : (
+                                <p className="text-sm text-white/60 leading-relaxed">
+                                  {product.content}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
               </div>
             )}
           </div>
