@@ -12,26 +12,11 @@ export default function LandingPage() {
   const line2Ref = useRef<HTMLDivElement>(null);
   const line3Ref = useRef<HTMLDivElement>(null);
   const line4Ref = useRef<HTMLDivElement>(null);
-  const line5Ref = useRef<HTMLDivElement>(null);
-  const line6Ref = useRef<HTMLDivElement>(null);
-  const line7Ref = useRef<HTMLDivElement>(null);
   const questionRef = useRef<HTMLDivElement>(null);
   const answer1Ref = useRef<HTMLDivElement>(null);
-  const answer2Ref = useRef<HTMLDivElement>(null);
-  const answer3Ref = useRef<HTMLDivElement>(null);
-  const emphasisRef = useRef<HTMLDivElement>(null);
   const finalQuestionRef = useRef<HTMLDivElement>(null);
-  const doubt1Ref = useRef<HTMLDivElement>(null);
-  const doubt2Ref = useRef<HTMLDivElement>(null);
-  const doubt3Ref = useRef<HTMLDivElement>(null);
   const marketingTitleRef = useRef<HTMLDivElement>(null);
   const marketingSubRef = useRef<HTMLDivElement>(null);
-  const valueRef = useRef<HTMLDivElement>(null);
-  const timeline1Ref = useRef<HTMLDivElement>(null);
-  const timeline2Ref = useRef<HTMLDivElement>(null);
-  const timeline3Ref = useRef<HTMLDivElement>(null);
-  const timeline4Ref = useRef<HTMLDivElement>(null);
-  const timeline5Ref = useRef<HTMLDivElement>(null);
   const section6Ref = useRef<HTMLDivElement>(null);
   const storyTitleRef = useRef<HTMLDivElement>(null);
   const storyRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -536,11 +521,9 @@ export default function LandingPage() {
                     style={{
                       strokeDasharray: 2000,
                       strokeDashoffset: 2000,
-                      animation:
-                        "draw-curve 0.4s cubic-bezier(.43,1.14,.53,-0.51) forwards",
+                      animation: "draw-curve 0.25s ease-out forwards",
                     }}
                   />
-
                   <defs>
                     <linearGradient
                       id="curveGradient"
@@ -555,13 +538,11 @@ export default function LandingPage() {
                   </defs>
 
                   <style>
-                    {`
-            @keyframes draw-curve {
-          to {
-            stroke-dashoffset: 0;
-          }
-        }
-      `}
+                    {`@keyframes draw-curve {
+              to {
+                stroke-dashoffset: 0;
+              }
+            }`}
                   </style>
                 </svg>
               </div>
