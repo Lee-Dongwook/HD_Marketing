@@ -39,13 +39,7 @@ export default function LandingPage() {
   const timeline5Ref = useRef<HTMLDivElement>(null);
   const section6Ref = useRef<HTMLDivElement>(null);
   const storyTitleRef = useRef<HTMLDivElement>(null);
-  const story1Ref = useRef<HTMLDivElement>(null);
-  const story2Ref = useRef<HTMLDivElement>(null);
-  const story3Ref = useRef<HTMLDivElement>(null);
-  const story4Ref = useRef<HTMLDivElement>(null);
-  const story5Ref = useRef<HTMLDivElement>(null);
-  const story6Ref = useRef<HTMLDivElement>(null);
-  const story7Ref = useRef<HTMLDivElement>(null);
+  const storyRefs = useRef<(HTMLDivElement | null)[]>([]);
   const successTitleRef = useRef<HTMLDivElement>(null);
   const section7Ref = useRef<HTMLDivElement>(null);
   const ceoQuestionRef = useRef<HTMLDivElement>(null);
@@ -70,6 +64,78 @@ export default function LandingPage() {
     "맛이 없는 거 아니야?",
     "서비스가 별로 아닐까?",
     "인테리어가 문제 아니야?",
+  ];
+
+  const stories = [
+    {
+      emoji: "👩‍🍳",
+      gradientFrom: "from-pink-400",
+      gradientTo: "to-pink-500",
+      title: "35세 치킨집 사장님",
+      content:
+        "장사하면서 눈물 쏙 뺀 날도 많았는데, 요즘은 가족들이랑 웃는 날이 더 많아요!",
+    },
+    {
+      emoji: "☕",
+      gradientFrom: "from-blue-400",
+      gradientTo: "to-blue-500",
+      title: "28세 카페 사장님",
+      content:
+        "가게 문 닫을까 고민하던 때가 엊그제 같은데, 지금은 매일매일 정신없어요.",
+    },
+    {
+      emoji: "🍜",
+      gradientFrom: "from-green-400",
+      gradientTo: "to-green-500",
+      title: "42세 분식집 사장님",
+      content: (
+        <>
+          부모님에게 걱정만 끼치던 저였는데 이젠 가끔 용돈도 드리네요..ㅋㅎㅋㅎ
+          <br />
+          정말 작지만 큰 변화라고 생각합니다!
+          <br />
+          부모님도 응원해주시니 더 힘이 나는 거 같아요!
+        </>
+      ),
+      subContent: "(가게 매출이 올라서 부모님 용돈도 가끔 드립니다..)",
+    },
+    {
+      emoji: "🍕",
+      gradientFrom: "from-purple-400",
+      gradientTo: "to-purple-500",
+      title: "31세 피자집 사장님",
+      content: (
+        <>
+          요즘은 매출 오른 걸 핑계 삼아 장난감 하나씩 사주네요ㅎㅎ
+          <br />
+          가족도 분위기가 좋아진거 같아서 너무 행복합니다 ㅎㅎ
+        </>
+      ),
+    },
+    {
+      emoji: "🥘",
+      gradientFrom: "from-orange-400",
+      gradientTo: "to-orange-500",
+      title: "39세 한식당 사장님",
+      content:
+        "힘들 때마다 가족 생각하면서 버텼는데, 이제는 가족들한테 자랑할 수 있는 가게가 됐어요",
+    },
+    {
+      emoji: "🍰",
+      gradientFrom: "from-red-400",
+      gradientTo: "to-red-500",
+      title: "26세 베이커리 사장님",
+      content:
+        "작은 가게지만 가족들의 희망이 되어가고 있어요. 대표님 덕에 하루하루 감사하며 일하고 있습니다.",
+    },
+    {
+      emoji: "🍗",
+      gradientFrom: "from-yellow-400",
+      gradientTo: "to-yellow-500",
+      title: "44세 호프집 사장님",
+      content:
+        "아직 완벽하진 않지만, 그래도 매출 걱정에 밤새던 일은 없어졌어요. 조금씩 좋아지고 있다는 게 느껴집니다.",
+    },
   ];
 
   useEffect(() => {
@@ -493,61 +559,30 @@ export default function LandingPage() {
         },
       });
 
-      section6Timeline
-        .fromTo(
-          storyTitleRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
-          0
-        )
-        .fromTo(
-          story1Ref.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          0.5
-        )
-        .fromTo(
-          story2Ref.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          0.7
-        )
-        .fromTo(
-          story3Ref.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          0.9
-        )
-        .fromTo(
-          story4Ref.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          1.1
-        )
-        .fromTo(
-          story5Ref.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          1.3
-        )
-        .fromTo(
-          story6Ref.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          1.5
-        )
-        .fromTo(
-          story7Ref.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-          1.7
-        )
-        .fromTo(
-          successTitleRef.current,
-          { opacity: 0, scale: 0.95 },
-          { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.2)" },
-          2.5
-        );
+      section6Timeline.fromTo(
+        storyTitleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.0, ease: "power2.out" },
+        0
+      );
+
+      storyRefs.current.forEach((ref, index) => {
+        if (ref) {
+          section6Timeline.fromTo(
+            ref,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+            0.5 + index * 0.2
+          );
+        }
+      });
+
+      section6Timeline.fromTo(
+        successTitleRef.current,
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.2)" },
+        2.5
+      );
 
       // Section 6 fade out on scroll
       gsap.to(section6Ref.current, {
@@ -1008,181 +1043,53 @@ export default function LandingPage() {
         <div className="relative z-10 w-full max-w-7xl px-8 space-y-16">
           {/* Title */}
           <div ref={storyTitleRef} className="opacity-0 text-center">
-            <p className="text-lg md:text-xl text-gray-500 mb-4">
-              (*우리의 이야기 입니다)
+            <p className="text-white/40 text-sm tracking-[0.3em] mb-6">
+              OUR STORY
+            </p>
+            <p className="text-4xl md:text-6xl text-white mb-6">
+              <span className="text-white/60">(</span>
+              <span className="text-white">우리의 이야기입니다</span>
+              <span className="text-white/60">)</span>
             </p>
           </div>
 
           {/* Stories Grid - Unified height with floating effect */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {/* Story 1 */}
-            <div ref={story1Ref} className="opacity-0 float-1">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                {/* Avatar and Info */}
-                <div className="flex flex-col items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center shadow-lg mb-2">
-                    <span className="text-3xl">👩‍🍳</span>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-24">
+            {stories.map((story, index) => (
+              <div
+                key={index}
+                ref={(el) => {
+                  storyRefs.current[index] = el;
+                }}
+                className={`opacity-0 float-${index + 1}`}
+              >
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
+                  {/* Avatar and Info */}
+                  <div className="flex flex-col items-center mb-4">
+                    <div
+                      className={`w-16 h-16 rounded-full bg-gradient-to-br ${story.gradientFrom} ${story.gradientTo} flex items-center justify-center shadow-lg mb-2`}
+                    >
+                      <span className="text-3xl">{story.emoji}</span>
+                    </div>
+                    <p className="text-sm font-medium text-gray-600">
+                      {story.title}
+                    </p>
                   </div>
-                  <p className="text-sm font-medium text-gray-600">
-                    35세 치킨집 사장님
-                  </p>
-                </div>
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                  <div className="text-4xl text-gray-300 mb-3">"</div>
-                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                    장사하면서 눈물 쏙 뺀 날도 많았는데, 요즘은 가족들이랑 웃는
-                    날이 더 많아요!
-                  </p>
+                  {/* Scrollable Content */}
+                  <div className="flex-1 overflow-y-auto scrollbar-hidden">
+                    <div className="text-4xl text-gray-300 mb-3">"</div>
+                    <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                      {story.content}
+                    </p>
+                    {story.subContent && (
+                      <p className="text-sm text-gray-400 mt-4 italic">
+                        {story.subContent}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Story 2 */}
-            <div ref={story2Ref} className="opacity-0 float-2">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                {/* Avatar and Info */}
-                <div className="flex flex-col items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center shadow-lg mb-2">
-                    <span className="text-3xl">☕</span>
-                  </div>
-                  <p className="text-sm font-medium text-gray-600">
-                    28세 카페 사장님
-                  </p>
-                </div>
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                  <div className="text-4xl text-gray-300 mb-3">"</div>
-                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                    가게 문 닫을까 고민하던 때가 엊그제 같은데, 지금은 매일매일
-                    정신없어요.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Story 3 */}
-            <div ref={story3Ref} className="opacity-0 float-3">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                {/* Avatar and Info */}
-                <div className="flex flex-col items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-lg mb-2">
-                    <span className="text-3xl">🍜</span>
-                  </div>
-                  <p className="text-sm font-medium text-gray-600">
-                    42세 분식집 사장님
-                  </p>
-                </div>
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                  <div className="text-4xl text-gray-300 mb-3">"</div>
-                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                    부모님에게 걱정만 끼치던 저였는데 이젠 가끔 용돈도
-                    드리네요..ㅋㅎㅋㅎ
-                    <br />
-                    정말 작지만 큰 변화라고 생각합니다!
-                    <br />
-                    부모님도 응원해주시니 더 힘이 나는 거 같아요!
-                  </p>
-                  <p className="text-sm text-gray-400 mt-4 italic">
-                    (가게 매출이 올라서 부모님 용돈도 가끔 드립니다..)
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Story 4 */}
-            <div ref={story4Ref} className="opacity-0 float-4">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                {/* Avatar and Info */}
-                <div className="flex flex-col items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-purple-500 flex items-center justify-center shadow-lg mb-2">
-                    <span className="text-3xl">🍕</span>
-                  </div>
-                  <p className="text-sm font-medium text-gray-600">
-                    31세 피자집 사장님
-                  </p>
-                </div>
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                  <div className="text-4xl text-gray-300 mb-3">"</div>
-                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                    요즘은 매출 오른 걸 핑계 삼아 장난감 하나씩 사주네요ㅎㅎ
-                    <br />
-                    가족도 분위기가 좋아진거 같아서 너무 행복합니다 ㅎㅎ
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Story 5 */}
-            <div ref={story5Ref} className="opacity-0 float-5">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                {/* Avatar and Info */}
-                <div className="flex flex-col items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center shadow-lg mb-2">
-                    <span className="text-3xl">🥘</span>
-                  </div>
-                  <p className="text-sm font-medium text-gray-600">
-                    39세 한식당 사장님
-                  </p>
-                </div>
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                  <div className="text-4xl text-gray-300 mb-3">"</div>
-                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                    힘들 때마다 가족 생각하면서 버텼는데, 이제는 가족들한테
-                    자랑할 수 있는 가게가 됐어요
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Story 6 */}
-            <div ref={story6Ref} className="opacity-0 float-6">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                {/* Avatar and Info */}
-                <div className="flex flex-col items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-400 to-red-500 flex items-center justify-center shadow-lg mb-2">
-                    <span className="text-3xl">🍰</span>
-                  </div>
-                  <p className="text-sm font-medium text-gray-600">
-                    26세 베이커리 사장님
-                  </p>
-                </div>
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                  <div className="text-4xl text-gray-300 mb-3">"</div>
-                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                    작은 가게지만 가족들의 희망이 되어가고 있어요. 대표님 덕에
-                    하루하루 감사하며 일하고 있습니다.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Story 7 */}
-            <div ref={story7Ref} className="opacity-0 float-7">
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                {/* Avatar and Info */}
-                <div className="flex flex-col items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center shadow-lg mb-2">
-                    <span className="text-3xl">🍗</span>
-                  </div>
-                  <p className="text-sm font-medium text-gray-600">
-                    44세 호프집 사장님
-                  </p>
-                </div>
-                {/* Scrollable Content */}
-                <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                  <div className="text-4xl text-gray-300 mb-3">"</div>
-                  <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
-                    아직 완벽하진 않지만, 그래도 매출 걱정에 밤새던 일은
-                    없어졌어요. 조금씩 좋아지고 있다는 게 느껴집니다.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           {/* Success statement */}
           <div className="opacity-100 text-center py-16">
