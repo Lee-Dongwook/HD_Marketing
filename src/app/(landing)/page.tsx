@@ -1063,29 +1063,16 @@ export default function LandingPage() {
                 }}
                 className={`opacity-0 float-${index + 1}`}
               >
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-[400px] flex flex-col">
-                  {/* Avatar and Info */}
-                  <div className="flex flex-col items-center mb-4">
-                    <div
-                      className={`w-16 h-16 rounded-full bg-gradient-to-br ${story.gradientFrom} ${story.gradientTo} flex items-center justify-center shadow-lg mb-2`}
-                    >
-                      <span className="text-3xl">{story.emoji}</span>
-                    </div>
-                    <p className="text-sm font-medium text-gray-600">
-                      {story.title}
-                    </p>
+                <div className="bg-gradient-to-br from-[#1A1A1A] to-[#0A0A0A] rounded-3xl p-8 border border-white/5 hover:border-[#7CB342]/30 transition-all duration-500 h-full flex flex-col">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#7CB342]/0 to-[#7CB342]/0 group-hover:from-[#7CB342]/5 group-hover:to-[#7CB342]/10 rounded-3xl transition-all duration-500" />
+                  <div className="flex flex-col">
+                    <span className="text-6xl mb-6">{story.emoji}</span>
+                    <p className="mb-6 text-white/60">{story.title}</p>
                   </div>
-                  {/* Scrollable Content */}
                   <div className="flex-1 overflow-y-auto scrollbar-hidden">
-                    <div className="text-4xl text-gray-300 mb-3">"</div>
-                    <p className="text-base md:text-lg font-light text-gray-700 leading-relaxed">
+                    <blockquote className="text-lg text-white/80 leading-relaxed">
                       {story.content}
-                    </p>
-                    {story.subContent && (
-                      <p className="text-sm text-gray-400 mt-4 italic">
-                        {story.subContent}
-                      </p>
-                    )}
+                    </blockquote>
                   </div>
                 </div>
               </div>
