@@ -510,7 +510,7 @@ export default function LandingPage() {
                 </h2>
               </div>
               {/* Cubic Bezier Curve */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none hidden">
+              <div className="flex flex-row items-center justify-center mt-48">
                 <svg
                   className="absolute w-full h-full"
                   viewBox="0 0 1200 800"
@@ -520,7 +520,7 @@ export default function LandingPage() {
                 >
                   {/* Background wave */}
                   <path
-                    d="M0 600 Q300 550 600 580 T1200 520"
+                    d="M0 600 Q300 550 600 580 T1200 600"
                     stroke="rgba(124, 179, 66, 0.15)"
                     strokeWidth="2"
                     fill="none"
@@ -528,7 +528,7 @@ export default function LandingPage() {
 
                   {/* Animated curve */}
                   <path
-                    d="M100 650 C450 -450 700 1400 1100 100"
+                    d="M100 650 C450 -450 700 1400 1100 -300"
                     stroke="url(#curveGradient)"
                     strokeWidth="3"
                     fill="none"
@@ -537,7 +537,7 @@ export default function LandingPage() {
                       strokeDasharray: 2000,
                       strokeDashoffset: 2000,
                       animation:
-                        "draw-curve 1.2s cubic-bezier(.43,1.14,.53,-0.51) forwards",
+                        "draw-curve 0.4s cubic-bezier(.43,1.14,.53,-0.51) forwards",
                     }}
                   />
 
@@ -556,7 +556,7 @@ export default function LandingPage() {
 
                   <style>
                     {`
-        @keyframes draw-curve {
+            @keyframes draw-curve {
           to {
             stroke-dashoffset: 0;
           }
