@@ -99,69 +99,80 @@ export default function LandingPage() {
   const secondSectionCardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const section = secondSectionRef.current;
     const textGroup = secondSectionTextGroupRef.current;
     const question = secondSectionQuestionRef.current;
     const cards = secondSectionCardsRef.current;
 
-    if (!section || !textGroup || !question || !cards) return;
+    if (!textGroup || !question || !cards) return;
 
-    gsap.fromTo(
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: textGroup,
+        start: "top 75%",
+        once: true,
+      },
+    });
+
+    tl.fromTo(
       textGroup,
       {
-        y: 80,
-        opacity: 0.7,
+        y: 60,
+        opacity: 0,
       },
       {
         y: 0,
         opacity: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "top center",
-          scrub: 0.6,
-        },
+        duration: 0.6,
+        ease: "power3.out",
       }
     );
 
-    gsap.fromTo(
+    tl.fromTo(
       question,
       {
-        y: 40,
-        opacity: 0.8,
+        scale: 0.96,
+        opacity: 0,
       },
       {
-        y: 0,
+        scale: 1.3,
         opacity: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 75%",
-          end: "top 55%",
-          scrub: 0.4,
-        },
-      }
+        duration: 0.45,
+        ease: "power2.out",
+      },
+      "-=0.15"
     );
 
-    gsap.fromTo(
-      cards,
+    const cardElements = cards.children;
+
+    tl.fromTo(
+      cardElements,
       {
-        y: 140,
-        opacity: 0.6,
+        y: 24,
+        opacity: 0,
       },
       {
         y: 0,
         opacity: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: "top 45%",
-          scrub: 0.8,
-        },
-      }
+        duration: 0.45,
+        ease: "power2.out",
+        stagger: 0.1,
+      },
+      "-=0.1"
     );
+    gsap.to(cardElements, {
+      y: -6,
+      duration: 1.8,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      stagger: {
+        each: 0.2,
+      },
+    });
+
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   const isReason = [
@@ -375,7 +386,7 @@ export default function LandingPage() {
             </p>
 
             <div
-              className="flex flex-row items-center justify-center gap-6 my-12"
+              className="flex flex-row items-center justify-center gap-6 my-16"
               ref={secondSectionCardsRef}
             >
               {isReason.map((reason, index) => (
