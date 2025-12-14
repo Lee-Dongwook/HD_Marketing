@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { forwardRef, RefObject, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContactBanner } from "@/components/ContactBanner";
@@ -8,6 +8,162 @@ import { ContactBanner } from "@/components/ContactBanner";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function LandingPage() {
+  const firstSectionRef = useRef<HTMLDivElement>(null);
+  const firstSectionTitleRefs = useRef<HTMLHeadingElement[]>([]);
+  const firstSectionCurveRef = useRef<SVGPathElement>(null);
+
+  useEffect(() => {
+    const section = firstSectionRef.current;
+    const titles = firstSectionTitleRefs.current;
+    const curve = firstSectionCurveRef.current;
+
+    if (!section || titles.length < 2 || !curve) return;
+
+    const curveLength = curve.getTotalLength();
+
+    gsap.set(curve, {
+      strokeDasharray: curveLength,
+      strokeDashoffset: curveLength,
+      opacity: 0,
+    });
+
+    gsap.set(titles, {
+      opacity: 0,
+      y: 24,
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 70%",
+        once: true,
+      },
+    });
+
+    tl.fromTo(
+      section,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out",
+      }
+    );
+
+    tl.to(titles, {
+      opacity: 1,
+      y: 0,
+      duration: 0.45,
+      ease: "power3.out",
+      stagger: 0.12,
+    });
+
+    tl.to(
+      curve,
+      {
+        strokeDashoffset: 0,
+        opacity: 1,
+        duration: 0.45,
+        ease: "cubic-bezier(.43,1.14,.53,-0.51)",
+      },
+      "-=0.15"
+    );
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+  useEffect(() => {
+    const section = firstSectionRef.current;
+    const curve = firstSectionCurveRef.current;
+
+    if (!section || !curve) return;
+
+    gsap.to(curve, {
+      y: -260,
+      opacity: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "bottom center",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }, []);
+
+  const secondSectionRef = useRef<HTMLDivElement>(null);
+  const secondSectionTextGroupRef = useRef<HTMLDivElement>(null);
+  const secondSectionQuestionRef = useRef<HTMLParagraphElement>(null);
+  const secondSectionCardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = secondSectionRef.current;
+    const textGroup = secondSectionTextGroupRef.current;
+    const question = secondSectionQuestionRef.current;
+    const cards = secondSectionCardsRef.current;
+
+    if (!section || !textGroup || !question || !cards) return;
+
+    gsap.fromTo(
+      textGroup,
+      {
+        y: 80,
+        opacity: 0.7,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "top center",
+          scrub: 0.6,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      question,
+      {
+        y: 40,
+        opacity: 0.8,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 75%",
+          end: "top 55%",
+          scrub: 0.4,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      cards,
+      {
+        y: 140,
+        opacity: 0.6,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "top 45%",
+          scrub: 0.8,
+        },
+      }
+    );
+  }, []);
+
   const isReason = [
     "맛이 없는 거 아니야?",
     "서비스가 별로 아닐까?",
@@ -92,7 +248,10 @@ export default function LandingPage() {
     },
   ];
 
-  const BasicCurve = () => {
+  const BasicCurve = forwardRef<
+    SVGPathElement,
+    { ref: RefObject<SVGPathElement> }
+  >((props, ref) => {
     return (
       <div className="flex flex-row items-center justify-center mt-48">
         <svg
@@ -104,6 +263,7 @@ export default function LandingPage() {
         >
           {/* Background wave */}
           <path
+            ref={ref}
             d="M0 600 Q300 550 600 580 T1200 600"
             stroke="rgba(124, 179, 66, 0.15)"
             strokeWidth="2"
@@ -146,36 +306,55 @@ export default function LandingPage() {
         </svg>
       </div>
     );
-  };
+  });
 
   return (
     <main className="relative w-full overflow-x-hidden bg-graident-to-b from-black/70 via-black/60 to-black">
-      <section className="relative min-h-screen w-full flex flex-col items-center justify-center mt-24 bg-gradient-to-br from-[#001A4d] via-[#002D66] to-[#001A33]">
+      <section
+        ref={firstSectionRef}
+        className="relative min-h-screen w-full flex flex-col items-center justify-center mt-24 bg-gradient-to-br from-[#001A4d] via-[#002D66] to-[#001A33]"
+      >
         <div className="relative z-10 container px-6 mx-auto lg:px-12 opacity-100 transform-none">
           <div className="max-w-6xl mx-auto">
             <div className="mb-32 opacity-100 transform-none">
               <div className="relative">
                 <div className="h-1 bg-gradient-to-r from-[#7CB342] to-transparent mb-12 w-28" />
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium text-white/90 mb-6 min-h-[1.2em]">
+                <h2
+                  ref={(el) => {
+                    if (el) firstSectionTitleRefs.current[0] = el;
+                  }}
+                  className="text-4xl md:text-6xl lg:text-7xl font-medium text-white/90 mb-6 min-h-[1.2em]"
+                >
                   오늘도 버티셨다면,
                 </h2>
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-medium mb-4 min-h-[1.2em]">
+                <h2
+                  ref={(el) => {
+                    if (el) firstSectionTitleRefs.current[1] = el;
+                  }}
+                  className="text-4xl md:text-6xl lg:text-7xl font-medium mb-4 min-h-[1.2em]"
+                >
                   <span className="bg-gradient-to-r from-[#7CB342] via-[#9DD65D] to-[#7CB342] bg-clip-text text-transparent">
                     내일은 우리가 함께 합니다.
                   </span>
                 </h2>
               </div>
             </div>
-            <BasicCurve />
+            <BasicCurve ref={firstSectionCurveRef} />
           </div>
         </div>
       </section>
 
       {/* Section 2: 과거부터 현재까지... */}
-      <section className="relative min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#001A4D] via-[#000000] to-[#001529]">
+      <section
+        ref={secondSectionRef}
+        className="relative min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-[#001A4D] via-[#000000] to-[#001529]"
+      >
         <div className="container mx-auto px-6 lg:px-12 py-24">
           <div className="max-w-5xl mx-auto">
-            <div className="opacity-100 mb-24 flex flex-col gap-4">
+            <div
+              ref={secondSectionTextGroupRef}
+              className="opacity-100 mb-24 flex flex-col gap-4"
+            >
               <p className="text-3xl md:text-5xl font-medium text-white/80 leading-relaxed mb-8">
                 과거부터 현재까지
               </p>
@@ -188,11 +367,17 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <p className="text-3xl md:text-4xl lg:text-5xl font-normal text-white text-center leading-relaxed">
+            <p
+              ref={secondSectionQuestionRef}
+              className="text-3xl md:text-4xl lg:text-5xl font-normal text-white text-center leading-relaxed"
+            >
               이유가 뭘까요?
             </p>
 
-            <div className="flex flex-row items-center justify-center gap-6 my-12">
+            <div
+              className="flex flex-row items-center justify-center gap-6 my-12"
+              ref={secondSectionCardsRef}
+            >
               {isReason.map((reason, index) => (
                 <div
                   className="relative bg-white rounded-3xl px-6 py-4 shadow-lg border border-gray-200 max-w-xs mb-8"
