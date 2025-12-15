@@ -801,7 +801,10 @@ export default function LandingPage() {
       </section>
 
       {/* Section 7: CEO Introduction */}
-      <section className="relative min-h-screen w-full flex items-center justify-center py-32">
+      <section className="relative min-h-screen w-full flex flex-col gap-8 items-center justify-center py-32">
+        <h4 className="text-white text-3xl md:text-4xl lg:text-5xl font-medium text-center leading-relaxed mb-16">
+          이 이야기의 시작점, 누군지 궁금하신가요?
+        </h4>
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
