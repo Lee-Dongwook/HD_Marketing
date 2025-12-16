@@ -2,13 +2,41 @@
 
 import { useState } from "react";
 import { FileTextIcon, TrashIcon } from "@radix-ui/react-icons";
+import { useSendInquiryFormToServer } from "@/hooks/api/useSendInquiryFormToServer";
 
 export const ContactBanner = () => {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
+  const { mutateAsync, isPending } = useSendInquiryFormToServer();
 
-  const handleSubmit = () => {
-    console.log("Form submitted:", { name, contact });
+  const handleSubmit = async () => {
+    if (!name.trim()) {
+      alert("성함을 입력해주세요.");
+      return;
+    }
+    if (!contact.trim()) {
+      alert("연락처를 입력해주세요.");
+      return;
+    }
+
+    try {
+      await mutateAsync({
+        title: "빠른 상담 신청",
+        content: `성함: ${name}\n연락처: ${contact}\n\n빠른 상담을 신청합니다.`,
+        form_type: 1,
+        name: name,
+        position: "-",
+        phone: contact,
+        email: "-",
+        is_agree: true,
+      });
+      alert("상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.");
+      setName("");
+      setContact("");
+    } catch (error) {
+      console.error("폼 제출 실패:", error);
+      alert("신청에 실패했습니다. 다시 시도해주세요.");
+    }
   };
 
   const handleClear = () => {
@@ -48,9 +76,10 @@ export const ContactBanner = () => {
         {/* Right: Submit Button */}
         <button
           onClick={handleSubmit}
-          className="rounded-md bg-blue-700 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          disabled={isPending}
+          className="rounded-md bg-blue-700 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          신청하기
+          {isPending ? "신청 중..." : "신청하기"}
         </button>
 
         <button
