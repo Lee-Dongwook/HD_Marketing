@@ -93,8 +93,8 @@ export default function ProductPage() {
                   const imageList = [
                     "/images/NaverLogo.png",
                     "/images/InstaLogo.png",
-                    "/images/Influencer.png",
                     "/images/CarrotLogo.png",
+                    "/images/Influencer.png",
                     "/images/MCNLogo.png",
                   ];
 
