@@ -727,14 +727,18 @@ export default function LandingPage() {
         <div className="relative z-10 w-full max-w-6xl px-8 space-y-16">
           {/* Final provocative question */}
           <div className="text-center py-16">
-            <div className="rounded-3xl px-12 md:px-16 py-12 md:py-16 shadow-lg border border-gray-200">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-loose">
-                정말 사장님 가게가
-                <br />
-                맛이 없어서
-                <br />
-                손님이 없는 걸까요?
-              </h1>
+            <div className="rounded-3xl px-12 md:px-16 py-12 md:py-16">
+              <div className="flex flex-col gap-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-loose">
+                  정말 사장님 가게가
+                </h1>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-loose">
+                  맛이 없어서
+                </h1>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white leading-loose">
+                  손님이 없는 걸까요?
+                </h1>
+              </div>
             </div>
           </div>
         </div>
@@ -768,7 +772,7 @@ export default function LandingPage() {
       </section>
 
       {/* Marketing definition - emphasized */}
-      <section className="text-center space-y-6 py-12 backdrop-blur-sm rounded-3xl p-12 md:p-16 border border-white mt-16 container mx-auto px-6 lg:px-12">
+      <section className="text-center space-y-6 py-12 backdrop-blur-sm rounded-3xl p-12 md:p-16 mt-16 container mx-auto px-6 lg:px-12">
         <div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight text-white">
             마케팅,
@@ -776,8 +780,15 @@ export default function LandingPage() {
         </div>
         <div>
           <h3 className="text-2xl md:text-3xl lg:text-4xl font-medium text-white">
-            <span className="text-[#7CB342]">매출 성장의 원동력</span>이 되어야
-            합니다.
+            <span className="relative inline-block text-[#7CB342] z-10">
+              {/* glow layer */}
+              <span
+                aria-hidden
+                className="absolute left-1/2 top-1/2 w-[120%] h-[120%] -translate-x-1/2 -translate-y-1/2 bg-[#7CB342]/45 blur-2xl rounded-full -z-10"
+              />
+              매출 성장의 원동력
+            </span>
+            이 되어야 합니다.
           </h3>
         </div>
       </section>
