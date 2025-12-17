@@ -19,7 +19,7 @@ export default function WorkPage() {
     "/images/Influencer.png",
   ];
 
-  const { isMobile } = useResponsive();
+  const { isMobile, isTablet } = useResponsive();
 
   const [selectedWork, setSelectedWork] = useState<any | null>(null);
   const { data: WorkData, isLoading } = useQuery<any[]>({
@@ -40,7 +40,7 @@ export default function WorkPage() {
 
   if (isLoading) return <div>Loading...</div>;
 
-  if (isMobile) {
+  if (isMobile || isTablet) {
     return (
       <main className="relative min-h-screen overflow-hidden py-20 lg:py-32">
         <div className="absolute inset-0 bg-gradient-to-br from-[#001A4D] via-[#001529] to-[#000000]" />
