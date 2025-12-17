@@ -172,7 +172,7 @@ export default function WorkPage() {
                         onClick={(e) => e.stopPropagation()}
                       >
                         {/* Work Image & Description */}
-                        <div className="relative rounded-3xl group opacity-100 transform-none">
+                        <div className="relative rounded-3xl group opacity-100 transform-none min-h-80">
                           <div className="aspect-[21/9] relative">
                             <Image
                               src={selectedWork?.image}
@@ -182,15 +182,15 @@ export default function WorkPage() {
                               priority
                               className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                             />
-                            <div className="absolute inset-0 top-2/3 transform-y-1/2 items-center justify-center p-8 lg:p-12 text-center">
-                              <div className="flex gap-4 opacity-100 transform-none text-center">
+                            <div className="absolute inset-0 top-2/3 transform-y-1/2 items-center justify-center text-center">
+                              <div className="flex gap-2 opacity-100 transform-none text-center">
                                 <div className="w-20 h-20 rounded-2xl bg-graident-to-br from-[#7CB342] to-[#6A9C37] flex items-center justify-center group-hover:scale-110 transition-transform"></div>
                               </div>
                               <div className="flex-1">
                                 <h2 className="text-xl text-white mb-4">
                                   {selectedWork?.title}
                                 </h2>
-                                <p className="text-xl text-white/80 mb-6">
+                                <p className="text-md text-white/80 mb-6">
                                   {selectedWork?.description}
                                 </p>
                               </div>
@@ -201,8 +201,8 @@ export default function WorkPage() {
                         {/* Process Section */}
                         <div className="relative rounded-3xl overflow-hidden group opacity-100 transform-none">
                           <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-12 opacity-100 transform-none">
-                            <div className="text-center mb-12">
-                              <h3 className="text-3xl lg:text-4xl text-white mb-4">
+                            <div className="text-center mb-8">
+                              <h3 className="text-xl text-white mb-4">
                                 진행 프로세스
                               </h3>
                               <p className="text-lg text-white/60">
@@ -229,37 +229,36 @@ export default function WorkPage() {
                                         }}
                                       >
                                         <div className="relative p-6 lg:p-8 rounded-3xl border backdrop-blur-xl transition-all duration-500 oveflow-y-auto bg-gradient-to-br from-white/10 to-white/5 border-white/20 hover:from-white/15 hover:to-white/10 hover:border-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-                                          <div
-                                            className="absolute inset-0 bg-graident-to-r from-transparent via-white/10 to-transparent rounded-3xl pointer-events-none"
-                                            style={{}}
-                                          />
-                                          <div className="relative flex items-center justify-between gap-4 lg:gap-6">
-                                            <div className="flex flex-col items-center gap-4 lg:gap-6 flex-1">
-                                              <div className="relative w-16 h-16 lg:w-20 lg:h-20 rounded-2xl flex items-center justify-start flex-shrink-0 transition-all duration-500 bg-graident-to-br from-white/20 to-white/10 group-hover/card:from-white/25 group-hover/card:to-white/15">
-                                                <span className="relative text-2xl lg:text-3xl transition-all duration-300 text-white/90">
-                                                  {idx + 1}
-                                                </span>
-                                                <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-white/40 transition-opacity opacity-0" />
-                                              </div>
-                                              <div className="flex-1">
-                                                <h4 className="text-lg mb-2 transition-all duration-300 text-white/90 group-hover/card:text-white">
+                                          <div className="absolute inset-0 bg-graident-to-r from-transparent via-white/10 to-transparent rounded-3xl pointer-events-none" />
+                                          <div className="relative flex items-center gap-4">
+                                            <div className="flex flex-col items-center gap-4">
+                                              <div className="flex flex-row items-center w-full">
+                                                <div className="relative w-6 h-6 rounded-2xl flex items-center justify-start flex-shrink-0 transition-all duration-500 bg-graident-to-br from-white/20 to-white/10 group-hover/card:from-white/25 group-hover/card:to-white/15">
+                                                  <span className="relative text-base transition-all duration-300 text-white/90">
+                                                    {idx + 1}
+                                                  </span>
+                                                </div>
+                                                <h4 className="text-md transition-all duration-300 text-white/90 group-hover/card:text-white">
                                                   {title}
                                                 </h4>
+                                              </div>
+
+                                              <div className="flex-1 mb-8">
                                                 <p className="text-md text-white/70 group-hover/card:text-white/80 transition-colors">
                                                   {description}
                                                 </p>
                                               </div>
                                             </div>
-                                            <div className="flex-shrink-0 transform-none">
-                                              <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center transition-all duration-300 bg-white/10 group-hover/card:bg-white/15">
-                                                <span className="text-white/80 text-lg lg:text-xl font-medium">
-                                                  {isExpanded ? (
-                                                    <SquareChevronUp className="w-6 h-6 transition-transform duration-300" />
-                                                  ) : (
-                                                    <SquareChevronDown className="w-6 h-6 transition-transform duration-300" />
-                                                  )}
-                                                </span>
-                                              </div>
+                                          </div>
+                                          <div className="absolute bottom-2 right-3">
+                                            <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300">
+                                              <span className="text-white/80 text-lg lg:text-xl font-medium">
+                                                {isExpanded ? (
+                                                  <SquareChevronUp className="w-6 h-6 transition-transform duration-300 bg-transparent" />
+                                                ) : (
+                                                  <SquareChevronDown className="w-6 h-6 transition-transform duration-300" />
+                                                )}
+                                              </span>
                                             </div>
                                           </div>
                                         </div>
