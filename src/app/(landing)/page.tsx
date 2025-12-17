@@ -9,6 +9,9 @@ import React, {
 } from "react";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContactBanner } from "@/components/ContactBanner";
 import { useResponsive } from "@/lib/useResponsive";
@@ -409,13 +412,7 @@ export default function LandingPage() {
       gradientTo: "to-green-500",
       title: "42세 분식집 사장님",
       content: (
-        <>
-          부모님에게 걱정만 끼치던 저였는데 이젠 가끔 용돈도 드리네요..ㅋㅎㅋㅎ
-          <br />
-          정말 작지만 큰 변화라고 생각합니다!
-          <br />
-          부모님도 응원해주시니 더 힘이 나는 거 같아요!
-        </>
+        <>부모님에게 걱정만 끼치던 저였는데 이젠 가끔 용돈도 드리네요..</>
       ),
       subContent: "(가게 매출이 올라서 부모님 용돈도 가끔 드립니다..)",
     },
@@ -839,9 +836,9 @@ export default function LandingPage() {
                 {[...stories, ...stories].map((story, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 w-[200px] min-h-[300px] mx-4"
+                    className="flex-shrink-0 w-[200px] min-h-[300px] overflow-y-auto mx-4"
                   >
-                    <div className="rounded-3xl p-8 border border-white/20 hover:border-[#7CB342]/50 bg-white/5 backdrop-blur-sm transition-all duration-500 h-[280px] flex flex-col group">
+                    <div className="rounded-3xl p-8 border border-white/20 hover:border-[#7CB342]/50 bg-white/5 backdrop-blur-sm transition-all duration-500 h-[300px] flex flex-col group">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#7CB342]/0 to-[#7CB342]/0 group-hover:from-[#7CB342]/5 group-hover:to-[#7CB342]/10 rounded-3xl transition-all duration-500" />
                       <div className="flex flex-col">
                         <span className="text-5xl mb-4">{story.emoji}</span>
@@ -849,7 +846,7 @@ export default function LandingPage() {
                           {story.title}
                         </p>
                       </div>
-                      <div className="flex-1 overflow-hidden">
+                      <div className="flex-1">
                         <blockquote className="text-base text-white/80 leading-relaxed">
                           {story.content}
                         </blockquote>
@@ -870,7 +867,7 @@ export default function LandingPage() {
         </section>
 
         {/* Section 7: CEO Introduction */}
-        <section className="relative min-h-screen w-full flex flex-col gap-8 items-center justify-center py-32">
+        <section className="relative min-h-screen w-full flex flex-col gap-6 items-center justify-center py-4">
           <h4 className="text-white text-xl font-medium text-center leading-relaxed">
             이 이야기의 시작점, 누군지 궁금하신가요?
           </h4>
@@ -881,8 +878,11 @@ export default function LandingPage() {
             />
           ))}
 
+          <h4 className="text-white text-xl font-medium text-center leading-relaxed">
+            "잘되는 가게보다 중요한건,
+          </h4>
           <h4 className="text-white text-xl font-medium text-center leading-relaxed mb-16">
-            "잘되는 가게보다 중요한건, 사람의 이야기를 이해하는 일이었습니다"
+            사람의 이야기를 이해하는 일이었습니다"
           </h4>
           {/* Content */}
           <div className="relative z-10 w-full px-6 md:px-8">
@@ -951,7 +951,7 @@ export default function LandingPage() {
 
         {/* Section 8: Final CTA */}
         <section className="relative w-full flex items-center justify-center py-20">
-          <div className="relative z-10 w-full max-w-7xl px-8 space-y-48">
+          <div className="relative z-10 w-full max-w-7xl px-8 space-y-24">
             {/* Results Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
               {/* Result 1 */}
@@ -1002,6 +1002,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
+
             <div className="text-center mb-16 opacity-100 transform-none">
               <h2 className="text-3xl text-white mb-8 leading-tight">
                 이제 더이상
@@ -1020,40 +1021,8 @@ export default function LandingPage() {
         </section>
 
         {/* Section 9: Final Closing */}
-        <section className="relative min-h-screen w-full flex items-center justify-center py-20">
+        <section className="relative w-full flex items-center justify-center py-12">
           <div className="relative z-10 w-full max-w-6xl px-8 space-y-16 text-center">
-            <div className="flex-wrap items-center justify-center gap-4 mb-16 opacity-100 hidden">
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍👩‍👧‍👦
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍🍳
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍⚕️
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍⚖️
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍💼
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍🔧
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍🏫
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍🌾
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍💻
-              </div>
-              <div className="text-5xl md:text-6xl cursor-pointer opacity-100 transform-none">
-                👨‍🎨
-              </div>
-            </div>
             <div className="opacity-100 py-2">
               <p className="text-2xl text-white/90 leading-relaxed mb-4">
                 우리는 모두가 사랑하는
@@ -1414,6 +1383,21 @@ export default function LandingPage() {
               <span className="text-[#7CB342]">성공을 도왔습니다</span>
             </div>
           </div>
+          {/**ToDO: Swiper 적용 */}
+          {/* <div className="bg-white">
+            <Swiper
+              spaceBetween={50}
+              slidesPerView={3}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+            >
+              <SwiperSlide>Slide 1</SwiperSlide>
+              <SwiperSlide>Slide 2</SwiperSlide>
+              <SwiperSlide>Slide 3</SwiperSlide>
+              <SwiperSlide>Slide 4</SwiperSlide>
+              ...
+            </Swiper>
+          </div> */}
         </div>
       </section>
 
