@@ -13,6 +13,7 @@ import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import QueryProvider from "../shared/provider/QueryProvider";
 import { usePathname } from "next/navigation";
+import KakaoFloatingButton from "@/components/KakaoFloatingButton";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -63,6 +64,7 @@ export default function RootLayout({
             }}
           >
             {children}
+            {isMainPage && <KakaoFloatingButton />}
           </main>
           <Footer />
         </QueryProvider>
